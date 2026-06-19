@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reverb · Build the distribution you actually own</title>
+  <meta name="description" content="Reverb watches your market, drafts replies and posts in your exact voice, and hands them to you ready to send. You stay the human. You hit send." />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="canonical" href="https://getreverb.ai/" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Reverb" />
+  <meta property="og:title" content="Reverb · Build the distribution you actually own" />
+  <meta property="og:description" content="Outreach in your voice. You send. Reverb drafts replies and posts that sound exactly like you, and hands them to you ready to send." />
+  <meta property="og:url" content="https://getreverb.ai/" />
+  <meta property="og:image" content="https://getreverb.ai/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Reverb · Build the distribution you actually own" />
+  <meta name="twitter:description" content="Outreach in your voice. You send." />
+  <meta name="twitter:image" content="https://getreverb.ai/og.png" />
+
+  <!-- no-JS safety net: reveal animations would otherwise hide content -->
+  <noscript><style>.reveal{opacity:1 !important;transform:none !important}.type-caret{display:none}</style></noscript>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Fira+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="Reverb home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 28 28" width="22" height="22" fill="none">
+            <path d="M2 14c3 0 3-8 6-8s3 16 6 16 3-12 6-12 2.5 4 6 4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="brand__word">Reverb</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#how">How it works</a>
+        <a href="#features">Product</a>
+        <a href="#manifesto">Manifesto</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <div class="nav__cta">
+        <a href="#waitlist" class="link-quiet">Sign in</a>
+        <a href="#waitlist" class="btn btn--primary btn--sm">Get early access</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__copy reveal">
+          <span class="eyebrow">Outbound, made human</span>
+          <h1 class="hero__title">Build the distribution<br/>you actually own.</h1>
+          <p class="hero__sub">
+            Reverb watches your market, drafts replies and posts in your exact voice,
+            and hands them to you ready to send. The reach of automation, the warmth
+            of you. You stay the human who hits send.
+          </p>
+          <div class="hero__actions">
+            <a href="#waitlist" class="btn btn--primary">Get early access</a>
+            <a href="#how" class="btn btn--ghost">See how it works</a>
+          </div>
+          <p class="hero__note"><span class="dot"></span> Free during private beta. Built for founders who still sell every deal themselves.</p>
+        </div>
+
+        <div class="hero__demo reveal">
+          <!-- Product card: the Telegram-style draft -->
+          <div class="card window">
+            <div class="window__bar">
+              <span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="window__title">reverb · draft ready</span>
+            </div>
+            <div class="window__body">
+              <div class="msg msg--src">
+                <span class="msg__label">Original · @levelsio · 2m · 1.2K likes</span>
+                <p>Just hit $200K MRR. Solo. No team, no ads, no VC.</p>
+              </div>
+              <div class="msg msg--draft">
+                <span class="msg__label">Reverb draft · in your voice</span>
+                <p id="type-draft" data-text="Solo to 200K with zero paid acquisition is the whole proof. Distribution was the product the entire time. Which channel actually compounded for you?">Solo to 200K with zero paid acquisition is the whole proof. Distribution was the product the entire time. Which channel actually compounded for you?</p>
+              </div>
+              <div class="approve">
+                <button class="chip chip--yes" type="button">✅ Post</button>
+                <button class="chip chip--edit" type="button">✏️ Edit</button>
+                <button class="chip chip--skip" type="button">❌ Skip</button>
+              </div>
+            </div>
+          </div>
+          <!-- floating metric chip -->
+          <div class="float-metric" aria-hidden="true">
+            <span class="float-metric__k">Clean rate</span>
+            <span class="float-metric__v">62%<i class="trend">▲</i></span>
+            <span class="float-metric__s">sounds like you, trending up</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST STRIP / MARQUEE -->
+    <section class="strip">
+      <div class="container"><span class="strip__label">Made for the people who sell by being human</span></div>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__row">
+          <div class="marquee__track">
+            <span class="marquee__item">Founders</span><span class="marquee__item">Operators</span><span class="marquee__item">Solo sellers</span><span class="marquee__item">Fundraisers</span><span class="marquee__item">Consultants</span><span class="marquee__item">Agency owners</span><span class="marquee__item">First sales hires</span>
+          </div>
+          <div class="marquee__track">
+            <span class="marquee__item">Founders</span><span class="marquee__item">Operators</span><span class="marquee__item">Solo sellers</span><span class="marquee__item">Fundraisers</span><span class="marquee__item">Consultants</span><span class="marquee__item">Agency owners</span><span class="marquee__item">First sales hires</span>
+          </div>
+        </div>
+        <div class="marquee__row marquee__row--rev">
+          <div class="marquee__track">
+            <span class="marquee__item">Warm intros</span><span class="marquee__item">Founder-led sales</span><span class="marquee__item">Follow-ups</span><span class="marquee__item">Thought leadership</span><span class="marquee__item">Relationships</span><span class="marquee__item">Distribution</span><span class="marquee__item">Fundraising</span>
+          </div>
+          <div class="marquee__track">
+            <span class="marquee__item">Warm intros</span><span class="marquee__item">Founder-led sales</span><span class="marquee__item">Follow-ups</span><span class="marquee__item">Thought leadership</span><span class="marquee__item">Relationships</span><span class="marquee__item">Distribution</span><span class="marquee__item">Fundraising</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIG STATEMENT -->
+    <section class="statement">
+      <div class="container">
+        <h2 class="statement__title reveal">
+          Relationships are the only<br/><span class="hl">distribution that is yours.</span>
+        </h2>
+        <p class="statement__sub reveal">
+          Ad platforms rent you reach. Algorithms can cut it off tomorrow. The audience
+          you build by showing up, in your own voice, compounds and cannot be taken away.
+          Reverb makes that the thing you do every day instead of the thing you mean to.
+        </p>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How it works</span>
+          <h2 class="section-title">Three steps. You hold the last one.</h2>
+        </div>
+        <div class="steps">
+          <article class="card step reveal">
+            <span class="step__n">01</span>
+            <h3>Watch your market</h3>
+            <p>Point Reverb at the people who matter: prospects, investors, the voices in your space. It reads everything they post, in real time.</p>
+          </article>
+          <article class="card step reveal">
+            <span class="step__n">02</span>
+            <h3>Drafts in your voice</h3>
+            <p>It writes replies and original posts that sound like you wrote them, grounded in a real fact or angle. Never generic, never a bot.</p>
+          </article>
+          <article class="card step reveal">
+            <span class="step__n">03</span>
+            <h3>You hit send</h3>
+            <p>Every draft lands in your phone. Post it, tweak it, or skip it with one tap. Nothing goes out without you. Ever.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+      <!-- F1 -->
+      <div class="container feature reveal">
+        <div class="feature__text">
+          <span class="eyebrow">Voice match</span>
+          <h2 class="feature__title">It sounds exactly like you.</h2>
+          <p class="feature__body">
+            Reverb learns your register from how you actually write: your wit, your
+            cadence, the way you reach for a specific number instead of a platitude.
+            The result reads like a sharp tweet you dashed off, not a tool's output.
+          </p>
+          <ul class="ticks">
+            <li>Your phrasing, your rhythm, your taste</li>
+            <li>Grounded in a real fact or counterpoint</li>
+            <li>Zero AI tells, zero filler, zero em dashes</li>
+          </ul>
+        </div>
+        <div class="feature__visual">
+          <div class="card voice">
+            <span class="voice__label">Your voice</span>
+            <div class="voice__tags">
+              <span>dry, deadpan wit</span><span>specific numbers</span>
+              <span>no hedging</span><span>design spine</span>
+              <span>punches up at hype</span><span>1 to 3 sentences</span>
+            </div>
+            <div class="voice__line"><span class="k">Register</span><span class="v">analyst by day, banger by night</span></div>
+            <div class="voice__line"><span class="k">Never</span><span class="v">hot takes, "founders should", emoji spam</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- F2 -->
+      <div class="container feature feature--rev reveal">
+        <div class="feature__text">
+          <span class="eyebrow">You stay in control</span>
+          <h2 class="feature__title">You always hold the send button.</h2>
+          <p class="feature__body">
+            Reverb is curate only by design. It drafts, you decide. Approve, edit, or
+            skip from your phone in seconds. It will never post on your behalf, because
+            the moment it does, it stops being you.
+          </p>
+          <ul class="ticks">
+            <li>One tap to post, edit, or skip</li>
+            <li>Nothing publishes without your yes</li>
+            <li>Runs while you sleep, waits for you to wake</li>
+          </ul>
+        </div>
+        <div class="feature__visual">
+          <div class="card window window--mini">
+            <div class="window__bar"><span class="window__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="window__title">your phone</span></div>
+            <div class="window__body">
+              <div class="msg msg--draft">
+                <span class="msg__label">Reverb draft · 9:14 AM</span>
+                <p>The best seed decks I have seen this year all cut the team slide to one line. Confidence is the new traction.</p>
+              </div>
+              <div class="approve">
+                <button class="chip chip--yes" type="button">✅ Post</button>
+                <button class="chip chip--edit" type="button">✏️ Edit</button>
+                <button class="chip chip--skip" type="button">❌ Skip</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- F3 -->
+      <div class="container feature reveal">
+        <div class="feature__text">
+          <span class="eyebrow">It compounds</span>
+          <h2 class="feature__title">It learns from every edit.</h2>
+          <p class="feature__body">
+            Every time you tweak a draft before posting, Reverb notices. It finds the
+            pattern in your corrections and tunes itself to need fewer of them. The
+            longer you use it, the more it disappears into your own voice.
+          </p>
+          <ul class="ticks">
+            <li>Tracks your clean rate over time</li>
+            <li>Turns your edits into voice refinements</li>
+            <li>Gets quieter and sharper every week</li>
+          </ul>
+        </div>
+        <div class="feature__visual">
+          <div class="card metrics">
+            <span class="metrics__label">Reflection · last 14 days</span>
+            <div class="metrics__big"><span>62%</span><i class="trend">▲ 11</i></div>
+            <span class="metrics__cap">clean rate, drafts you posted untouched</span>
+            <div class="bars" aria-hidden="true">
+              <i style="--h:38%"></i><i style="--h:44%"></i><i style="--h:41%"></i>
+              <i style="--h:52%"></i><i style="--h:49%"></i><i style="--h:58%"></i><i style="--h:62%"></i>
+            </div>
+            <div class="metrics__row"><span>Sent</span><span>41</span></div>
+            <div class="metrics__row"><span>Edited then sent</span><span>14</span></div>
+            <div class="metrics__row"><span>Skipped</span><span>6</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANIFESTO / ENEMY -->
+    <section class="manifesto" id="manifesto">
+      <div class="container manifesto__inner reveal">
+        <h2 class="manifesto__title">People hate buying from bots.</h2>
+        <p class="manifesto__body">
+          The inbox is full of automated outreach that everyone can smell from a mile
+          away. The noise made one thing rare and valuable again: a real person, saying
+          something specific, at the right moment. Reverb does not replace you. It gives
+          you the reach of a machine while keeping the only thing that ever closed a deal
+          or won a round, which is you.
+        </p>
+        <a href="#waitlist" class="btn btn--primary">Be the human</a>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Pricing</span>
+          <h2 class="section-title">Simple, while it is early.</h2>
+        </div>
+        <div class="plans">
+          <article class="card plan reveal">
+            <span class="plan__name">Private beta</span>
+            <div class="plan__price">Free<span> &nbsp;/ for now</span></div>
+            <p class="plan__desc">A small group of founders, shaping the product with us.</p>
+            <ul class="ticks">
+              <li>Full engine, one voice</li>
+              <li>Drafts to your phone</li>
+              <li>Direct line to the team</li>
+            </ul>
+            <a href="#waitlist" class="btn btn--ghost btn--block">Request access</a>
+          </article>
+          <article class="card plan plan--feat reveal">
+            <span class="plan__name">Founder</span>
+            <div class="plan__price">$<span class="plan__amt">49</span><span> &nbsp;/ mo, at launch</span></div>
+            <p class="plan__desc">For the founder who is still the whole sales team.</p>
+            <ul class="ticks">
+              <li>Everything in beta</li>
+              <li>The learning loop, tuned to you</li>
+              <li>Reply and original-post engine</li>
+            </ul>
+            <a href="#waitlist" class="btn btn--primary btn--block">Get early access</a>
+          </article>
+          <article class="card plan reveal">
+            <span class="plan__name">Team</span>
+            <div class="plan__price">Let's talk</div>
+            <p class="plan__desc">For a founding team building distribution together.</p>
+            <ul class="ticks">
+              <li>Multiple voices</li>
+              <li>Shared market coverage</li>
+              <li>Priority support</li>
+            </ul>
+            <a href="#waitlist" class="btn btn--ghost btn--block">Contact us</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta" id="waitlist">
+      <div class="cta__grid" aria-hidden="true"></div>
+      <div class="container cta__inner reveal">
+        <h2 class="cta__title">Make your voice carry.</h2>
+        <p class="cta__sub">Say it once. Let it carry. Join the private beta.</p>
+        <form class="cta__form" id="waitlist-form" novalidate>
+          <input type="email" name="email" placeholder="you@company.com" aria-label="Email address" required />
+          <button class="btn btn--primary" type="submit">Get early access</button>
+        </form>
+        <p class="cta__fine" id="form-msg">No spam. Just an invite when your spot opens.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="brand" href="#top">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 28 28" width="20" height="20" fill="none"><path d="M2 14c3 0 3-8 6-8s3 16 6 16 3-12 6-12 2.5 4 6 4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="brand__word">Reverb</span>
+        </a>
+        <p>Outreach in your voice. You send.</p>
+      </div>
+      <nav class="footer__cols" aria-label="Footer">
+        <div><span>Product</span><a href="#how">How it works</a><a href="#features">Features</a><a href="#pricing">Pricing</a></div>
+        <div><span>Company</span><a href="#manifesto">Manifesto</a><a href="#waitlist">Early access</a></div>
+        <div><span>Legal</span><a href="#">Privacy</a><a href="#">Terms</a></div>
+      </nav>
+    </div>
+    <div class="container footer__base">
+      <span>© 2026 Reverb. All rights reserved.</span>
+      <span class="footer__made">Built for founders who sell by being human.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
