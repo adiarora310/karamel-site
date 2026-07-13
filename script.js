@@ -1,4 +1,4 @@
-// Reverb landing · interactions
+// Karamel landing · interactions
 
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

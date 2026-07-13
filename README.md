@@ -1,6 +1,6 @@
-# Reverb landing page
+# Karamel landing page
 
-Static one-page marketing site for Reverb. No build step, no framework. Just
+Static one-page marketing site for Karamel. No build step, no framework. Just
 `index.html`, `styles.css`, `script.js`, and a few assets. Deploys anywhere that
 serves static files.
 
@@ -11,9 +11,9 @@ serves static files.
 | `index.html` | The page |
 | `styles.css` | All styles, including the Modal-fidelity animation layer |
 | `script.js` | Nav state, scroll reveals, the hero typewriter, the waitlist form |
-| `favicon.svg` | Tab icon (the Reverb waveform mark) |
+| `favicon.svg` | Tab icon (the Karamel waveform mark) |
 | `og.svg` | Source for the social share image (see "Share image" below) |
-| `robots.txt`, `sitemap.xml` | SEO basics (point at https://getreverb.ai) |
+| `robots.txt`, `sitemap.xml` | SEO basics (point at https://getkaramel.ai) |
 | `404.html` | Branded not-found page |
 
 ## Design notes
@@ -53,12 +53,12 @@ Pick one. The site is plain static files, so any of these work in minutes:
 - **GitHub Pages:** push this folder to a repo, enable Pages on the branch.
 - **Vercel:** `vercel` in this folder, accept the static defaults.
 
-Then point `getreverb.ai` (or `.io`) at the host and update the absolute URLs in
+Then point `getkaramel.ai` (or `.io`) at the host and update the absolute URLs in
 the `<head>` Open Graph tags, `robots.txt`, and `sitemap.xml` if the domain
 differs.
 
 ## Canonical location
 
-Source of truth lives in `~/Documents/Claude/reverb/web`. (During local preview
-in this environment the files are mirrored to `/tmp/reverb-web` because the
+Source of truth lives in `~/Documents/Claude/karamel/web`. (During local preview
+in this environment the files are mirrored to `/tmp/karamel-web` because the
 preview sandbox only reads its declared working directories.)

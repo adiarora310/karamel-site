@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Karamel — GTM for builders</title>
+<meta name="description" content="Karamel earns you mindshare with the people whose yes you need, in your own voice. You approve. You post." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E0D0C; --ink-soft:#202020; --muted:#6B7280;
+    --page:#FCFCFC; --panel:#F5F5F5; --panel-2:#FAFAFA;
+    --line:#ECECEC; --line-2:#D9D9D9;
+    --acid:#DEFF67;
+    --head:'Inter Tight',-apple-system,sans-serif;
+    --body:'Inter',-apple-system,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+
+  /* announcement */
+  .annc{background:#0A0A0A;color:#fff;text-align:center;font-size:13px;padding:9px 16px}
+  .annc a{color:#fff;text-decoration:underline;text-underline-offset:2px}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:40;background:rgba(252,252,252,.94);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink)}
+  .logo .word{font-family:var(--head);font-weight:600;font-size:19px;letter-spacing:-.02em}
+  .navlinks{display:flex;gap:28px;font-size:14.5px}
+  .navlinks a{color:var(--ink);text-decoration:none;opacity:.85}
+  .navlinks a:hover{opacity:1}
+  .navright{display:flex;gap:10px;align-items:center}
+  .pill{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;font-size:14px;font-weight:500;
+    padding:10px 18px;text-decoration:none;cursor:pointer;transition:transform .06s}
+  .pill:active{transform:translateY(1px)}
+  .pill.outline{border:1px solid var(--line-2);color:var(--ink);background:#fff}
+  .pill.acid{background:var(--acid);color:var(--ink);border:1px solid rgba(14,13,12,.08)}
+  .pill.dark{background:var(--ink);color:#fff}
+
+  /* hero panel */
+  .panel{background:var(--panel-2);border-radius:20px;margin:16px}
+  .hero{padding:88px 24px 40px;text-align:center}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;
+    font-family:var(--mono);font-size:12.5px;color:var(--ink);padding:7px 14px;margin-bottom:34px}
+  .badge b{color:#3f7d34;font-weight:500}
+  h1{font-family:var(--head);font-weight:500;font-size:clamp(44px,5.4vw,72px);line-height:1.04;letter-spacing:-.04em;margin:0 0 26px;color:var(--ink-soft)}
+  .sub{font-size:18px;color:var(--muted);max-width:640px;margin:0 auto 34px;line-height:1.55}
+  .hero .cta{margin-bottom:56px}
+
+  /* media block: the real product */
+  .media{max-width:1180px;margin:0 auto;padding:0 24px 26px}
+  .media .frame{border-radius:16px;border:1px solid var(--line-2);overflow:hidden;box-shadow:0 30px 80px rgba(14,13,12,.10);background:#fff}
+  .media img{display:block;width:100%;height:auto}
+  .trust{font-size:13.5px;color:var(--muted);text-align:center;padding:22px 0 56px;font-family:var(--mono)}
+
+  /* statement */
+  .statement{padding:120px 0 64px}
+  .statement p.big{font-family:var(--head);font-weight:500;font-size:clamp(28px,3.2vw,42px);letter-spacing:-.02em;line-height:1.22;max-width:820px;margin:0}
+  .statement .who{margin-top:28px;font-size:14px;color:var(--muted)}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(3,auto) 1fr;gap:64px;align-items:center;padding:24px 0 120px}
+  .stat .n{font-family:var(--mono);font-size:clamp(40px,4.4vw,60px);font-weight:500;letter-spacing:-.02em}
+  .stat .l{font-size:13.5px;color:var(--muted);margin-top:8px}
+  .stats .cta{justify-self:end}
+
+  /* features panel */
+  .features{padding:96px 24px 90px}
+  .features h2{font-family:var(--head);font-weight:500;font-size:clamp(34px,3.9vw,56px);letter-spacing:-.04em;line-height:1.08;margin:0 0 16px;max-width:760px}
+  .features .lead{color:var(--muted);font-size:16.5px;max-width:640px;margin:0 0 56px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+  .card .shot{background:var(--panel);border-bottom:1px solid var(--line);aspect-ratio:16/10.5;overflow:hidden}
+  .card .shot img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block}
+  .card .txt{padding:22px 22px 26px}
+  .card h3{font-family:var(--head);font-weight:600;font-size:19px;letter-spacing:-.01em;margin:0 0 8px}
+  .card p{font-size:14.5px;color:var(--muted);margin:0;line-height:1.55}
+
+  /* final */
+  .final{text-align:center;padding:120px 24px}
+  .final h2{font-family:var(--head);font-weight:500;font-size:clamp(34px,4vw,54px);letter-spacing:-.04em;margin:0 0 18px}
+  .final p{color:var(--muted);margin:0 0 32px}
+
+  footer{background:#0A0A0A;color:rgba(255,255,255,.65);font-size:13.5px;padding:36px 0}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  footer a{color:#fff;text-decoration:none}
+
+  @media (max-width:900px){
+    .navlinks{display:none}
+    .cards{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr;gap:36px;padding-bottom:80px}
+    .stats .cta{justify-self:start;grid-column:1/-1}
+    .statement{padding:80px 0 48px}
+  }
+</style>
+</head>
+<body>
+
+  <div class="annc"><a href="mailto:adiarora310@gmail.com?subject=Karamel%20early%20access">News: Karamel opens its concierge pilot for early access</a></div>
+
+  <nav class="nav">
+    <div class="wrap">
+      <a class="logo" href="#">
+        <svg width="26" height="26" viewBox="0 0 124 138" fill="none" aria-hidden="true">
+          <path d="M62 16 C92 16 112 34 112 66 C112 100 90 122 58 122 C30 122 12 102 12 72 C12 40 32 16 62 16 Z" fill="#0E0D0C"/>
+          <path d="M24 78 C42 60 58 54 78 58 C92 61 102 70 108 82" stroke="#DEFF67" stroke-width="9" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span class="word">karamel</span>
+      </a>
+      <div class="navlinks">
+        <a href="#proof">Proof</a><a href="#how">How it works</a><a href="#thesis">Thesis</a>
+      </div>
+      <div class="navright">
+        <a class="pill outline" href="mailto:adiarora310@gmail.com?subject=Karamel%20pilot%20question">Talk to us</a>
+        <a class="pill acid" href="mailto:adiarora310@gmail.com?subject=Karamel%20early%20access">Get early access</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="panel">
+    <header class="hero">
+      <div class="badge">30-day proof <b>&uarr;332% impressions</b> &#183; cold start, no ads</div>
+      <h1>Your yes, won<br>before you ask</h1>
+      <p class="sub">Karamel earns you mindshare with the people whose yes you need, in your own voice. You approve. You post. Nothing ships on its own.</p>
+      <div class="cta"><a class="pill dark" href="mailto:adiarora310@gmail.com?subject=Karamel%20early%20access">Get early access</a></div>
+      <div class="media">
+        <div class="frame"><img src="assets/app_preview.png" alt="The Karamel product: True Reach dashboard and voice-gated drafts" loading="eager"></div>
+      </div>
+      <div class="trust">Live product. Real engine. The numbers below are from the platform's own analytics.</div>
+    </header>
+  </div>
+
+  <section class="statement wrap" id="thesis">
+    <p class="big">"Followers are rented. A platform can zero them overnight. True Reach counts what is actually yours: the people you can reach directly who engage back. Karamel is the ledger that grows it."</p>
+    <div class="who">The Karamel thesis</div>
+  </section>
+
+  <section class="wrap" id="proof">
+    <div class="stats">
+      <div class="stat"><div class="n">&uarr;332%</div><div class="l">Impressions, to 34.2K in 30 days</div></div>
+      <div class="stat"><div class="n">&uarr;887%</div><div class="l">Profile visits</div></div>
+      <div class="stat"><div class="n">&uarr;259%</div><div class="l">Engagement rate, while reach quadrupled</div></div>
+      <div class="cta"><a class="pill outline" href="mailto:adiarora310@gmail.com?subject=Karamel%20early%20access">Get early access</a></div>
+    </div>
+  </section>
+
+  <div class="panel" id="how">
+    <section class="features">
+      <h2>Distribution you own, for builders who ship</h2>
+      <p class="lead">Karamel pairs a voice-true drafting engine with a relationship ledger, so twenty minutes a day compounds into the people who back, buy, and hire.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="shot"><img src="assets/crop_metric.png" alt="True Reach metric card from the live product"></div>
+          <div class="txt"><h3>Know your True Reach</h3><p>The anti-vanity number: owned contacts with a real two-way exchange in the last 90 days. Computed from your data, locally.</p></div>
+        </div>
+        <div class="card">
+          <div class="shot"><img src="assets/crop_draft.png" alt="A voice-gated draft from the live product"></div>
+          <div class="txt"><h3>Drafts in your voice</h3><p>Every draft is graded against your voice before you see it. Flat drafts get rewritten or die. You approve, edit, or skip.</p></div>
+        </div>
+        <div class="card">
+          <div class="shot"><img src="assets/crop_warmth.png" alt="Warmth and champions card from the live product"></div>
+          <div class="txt"><h3>Warm the right people</h3><p>Signals show who is moving in your market and why it matters, so you show up as a human, never as automation.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="final">
+    <h2>Build the distribution you actually own</h2>
+    <p>Early access is concierge-first: a small cohort, hands-on, measured in True Reach.</p>
+    <a class="pill acid" href="mailto:adiarora310@gmail.com?subject=Karamel%20early%20access">Get early access</a>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>Karamel. GTM for builders.</span>
+      <a href="mailto:adiarora310@gmail.com">adiarora310@gmail.com</a>
+    </div>
+  </footer>
+
+</body>
+</html>
