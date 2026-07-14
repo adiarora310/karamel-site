@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://getkaramel.ai/sitemap.xml
+Sitemap: https://heykaramel.com/sitemap.xml

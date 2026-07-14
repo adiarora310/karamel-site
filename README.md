@@ -13,7 +13,7 @@ serves static files.
 | `script.js` | Nav state, scroll reveals, the hero typewriter, the waitlist form |
 | `favicon.svg` | Tab icon (the Karamel waveform mark) |
 | `og.svg` | Source for the social share image (see "Share image" below) |
-| `robots.txt`, `sitemap.xml` | SEO basics (point at https://getkaramel.ai) |
+| `robots.txt`, `sitemap.xml` | SEO basics (point at https://heykaramel.com) |
 | `404.html` | Branded not-found page |
 
 ## Design notes
@@ -53,7 +53,7 @@ Pick one. The site is plain static files, so any of these work in minutes:
 - **GitHub Pages:** push this folder to a repo, enable Pages on the branch.
 - **Vercel:** `vercel` in this folder, accept the static defaults.
 
-Then point `getkaramel.ai` (or `.io`) at the host and update the absolute URLs in
+Then point `heykaramel.com` at the host and update the absolute URLs in
 the `<head>` Open Graph tags, `robots.txt`, and `sitemap.xml` if the domain
 differs.
 

@@ -1,264 +1,372 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Karamel — GTM for builders</title>
-<meta name="description" content="Karamel earns you mindshare with the people whose yes you need, in your own voice. You approve. You post." />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karamel, your story everywhere it matters</title>
+<meta name="description" content="Karamel is your PR media agency in software form. We place your announcements, grow your channels, and build the distribution your work deserves.">
+<link rel="icon" href="assets/emblem.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#241a0f; --ink-2:#5f4f3d; --ink-3:#94826b;
-    --caramel:#72411B; --brown:#592F0F; --espresso:#3D1A00;
-    --teal:#004439; --teal-2:#0A5E5B;
-    --cream:#F5EFE4; --paper:#FBF8F3;
-    --hair:rgba(61,26,0,.12); --hair-2:rgba(61,26,0,.2);
-    --sans:'Geist',-apple-system,BlinkMacSystemFont,sans-serif;
-    --mono:'Geist Mono',ui-monospace,monospace;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0}
-  body{background:#fff;color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
-  ::selection{background:var(--cream)}
-
-  /* nav */
-  .nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
-  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
-  .logo .word{font-weight:600;font-size:19px;letter-spacing:-.02em}
-  .navlinks{display:flex;gap:26px;font-size:14.5px}
-  .navlinks a{color:var(--ink-2);text-decoration:none}
-  .navlinks a:hover{color:var(--ink)}
-  .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:12px;font-weight:600;font-size:14.5px;
-    padding:11px 20px;text-decoration:none;cursor:pointer;border:0;transition:transform .07s, background .15s, box-shadow .15s}
-  .btn:active{transform:translateY(1px)}
-  .btn.teal{background:var(--teal);color:var(--cream);box-shadow:0 6px 18px rgba(0,68,57,.22)}
-  .btn.teal:hover{background:var(--teal-2)}
-  .btn.quiet{background:transparent;color:var(--ink);border:1px solid var(--hair-2)}
-  .nav .btn{padding:9px 16px;font-size:13.5px}
-
-  /* hero: asymmetric split */
-  .hero{padding:84px 0 72px;overflow:hidden}
-  .hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-  .kicker{font-family:var(--mono);font-size:12.5px;color:var(--teal-2);letter-spacing:.02em;margin-bottom:22px;display:flex;align-items:center;gap:9px}
-  .kicker .dot{width:6px;height:6px;border-radius:50%;background:var(--teal-2)}
-  h1{font-size:clamp(40px,4.6vw,58px);line-height:1.03;letter-spacing:-.035em;font-weight:600;margin:0 0 22px}
-  h1 .warm{color:var(--caramel)}
-  .hero p.sub{font-size:17.5px;color:var(--ink-2);max-width:46ch;margin:0 0 30px;line-height:1.55}
-  .cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-  .cta-note{font-size:13px;color:var(--ink-3)}
-
-  .shotwrap{position:relative}
-  .shotwrap .glowline{position:absolute;inset:auto -8% -14% -8%;height:58%;
-    background:radial-gradient(60% 100% at 50% 100%, var(--cream) 0%, rgba(245,239,228,0) 70%);z-index:0}
-  .shot{position:relative;z-index:1;border-radius:18px;border:1px solid var(--hair);overflow:hidden;
-    box-shadow:0 2px 0 rgba(255,255,255,.8) inset, 0 32px 70px rgba(61,26,0,.16);
-    transform:rotate(.6deg)}
-  .shot img{display:block;width:100%;height:auto}
-  .shot-tag{position:absolute;z-index:2;left:18px;bottom:18px;background:rgba(255,255,255,.94);border:1px solid var(--hair);
-    border-radius:999px;font-family:var(--mono);font-size:11.5px;color:var(--ink-2);padding:6px 12px}
-
-  /* proof band */
-  .proof{border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);background:var(--paper)}
-  .proof .row{display:grid;grid-template-columns:auto repeat(3,1fr);gap:44px;align-items:center;padding:34px 0}
-  .proof .cap{font-size:13px;color:var(--ink-2);max-width:21ch;line-height:1.45}
-  .pstat .n{font-family:var(--mono);font-size:30px;font-weight:500;color:var(--teal);letter-spacing:-.01em}
-  .pstat .l{font-size:12.5px;color:var(--ink-3);margin-top:3px}
-
-  /* metric story: full-width */
-  .story{padding:110px 0 96px}
-  .story h2{font-size:clamp(30px,3.6vw,44px);letter-spacing:-.03em;font-weight:600;line-height:1.08;margin:0 0 16px;max-width:19ch}
-  .story .lead{color:var(--ink-2);font-size:16.5px;max-width:58ch;margin:0 0 46px}
-  .ledgerband{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  .ledger{background:#fff;border:1px solid var(--hair);border-radius:18px;padding:28px;box-shadow:0 22px 50px rgba(61,26,0,.10)}
-  .ledger .line{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;border-top:1px solid var(--hair);font-size:14.5px;color:var(--ink-2)}
-  .ledger .line:first-child{border-top:0}
-  .ledger .line b{font-family:var(--mono);color:var(--ink);font-size:19px;font-weight:500}
-  .ledger .line .up{color:var(--teal-2);font-family:var(--mono);font-weight:500}
-  .story .pts{display:flex;flex-direction:column;gap:18px}
-  .pt{padding-left:18px;border-left:2px solid var(--cream)}
-  .pt.hot{border-left-color:var(--caramel)}
-  .pt h4{margin:0 0 4px;font-size:16.5px;font-weight:600;letter-spacing:-.01em}
-  .pt p{margin:0;color:var(--ink-2);font-size:14.5px}
-
-  /* engine: split, flipped */
-  .engine{padding:0 0 110px}
-  .engine .grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center}
-  .engine h2{font-size:clamp(28px,3.2vw,40px);letter-spacing:-.03em;font-weight:600;line-height:1.1;margin:0 0 14px}
-  .engine p{color:var(--ink-2);font-size:15.5px;max-width:50ch;margin:0 0 10px}
-  .flowcard{background:var(--espresso);color:var(--cream);border-radius:18px;padding:26px;box-shadow:0 26px 60px rgba(61,26,0,.28)}
-  .fstep{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-top:1px solid rgba(245,239,228,.12);font-size:14.5px}
-  .fstep:first-child{border-top:0}
-  .fstep .no{font-family:var(--mono);font-size:12px;color:#c9a97e;padding-top:2px}
-  .fstep.you{color:#fff;font-weight:600}
-  .fstep.you .no{color:var(--teal-2);filter:brightness(1.6)}
-
-  /* guardrail */
-  .guard{background:var(--teal);color:var(--cream);padding:78px 0}
-  .guard .inner{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
-  .guard h2{font-size:clamp(26px,3vw,38px);letter-spacing:-.025em;font-weight:600;margin:0 0 12px}
-  .guard p{margin:0;color:rgba(245,239,228,.85);font-size:15.5px;max-width:52ch}
-  .guard .stamp{font-family:var(--mono);font-size:13px;color:rgba(245,239,228,.75);border:1px solid rgba(245,239,228,.3);
-    border-radius:14px;padding:22px;line-height:1.7;justify-self:end}
-
-  /* final */
-  .final{padding:110px 0;text-align:left}
-  .final .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
-  .final h2{font-size:clamp(32px,3.8vw,48px);letter-spacing:-.03em;font-weight:600;line-height:1.06;margin:0 0 14px}
-  .final p{color:var(--ink-2);margin:0 0 28px;max-width:48ch}
-  .final .side{font-family:var(--mono);font-size:13px;color:var(--ink-3);line-height:1.8;border-left:2px solid var(--cream);padding-left:20px}
-
-  footer{border-top:1px solid var(--hair);padding:30px 0;font-size:13.5px;color:var(--ink-3)}
-  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-  footer a{color:var(--ink-2);text-decoration:none}
-
-  /* motion: gentle, motivated (hierarchy on load), reduced-motion safe */
-  @media (prefers-reduced-motion: no-preference){
-    .hero .grid > *{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.16,1,.3,1) forwards}
-    .hero .grid > *:nth-child(2){animation-delay:.12s}
-    @keyframes rise{to{opacity:1;transform:translateY(0) rotate(0)}}
-    .shot{transition:transform .35s cubic-bezier(.16,1,.3,1)}
-    .shotwrap:hover .shot{transform:rotate(0) translateY(-4px)}
-  }
-
-  @media (max-width:900px){
-    .hero .grid,.ledgerband,.engine .grid,.guard .inner,.final .grid{grid-template-columns:1fr;gap:34px}
-    .proof .row{grid-template-columns:1fr 1fr;gap:26px}
-    .navlinks{display:none}
-    .shot{transform:none}
-    .guard .stamp{justify-self:start}
-  }
+  body { margin: 0; background: #ffffff; font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; color: #000000; }
+  html { scroll-behavior: smooth; }
+  a { color: #000000; text-decoration: none; } a:hover { color: #c67e1d; }
+  input { font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; }
+  input::placeholder { color: #9a9a9a; }
+  @keyframes km-drift { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-24px) scale(1.08); } }
+  .cta:hover { background: #1a1a1a !important; color: #ffffff !important; }
+  .signin { color: #000000; background: transparent; border: 1px solid rgba(70,17,11,0.16); }
+  .signin:hover { color: #000000; background: rgba(70,17,11,0.05); }
+  @media (prefers-reduced-motion: reduce){ .km-blob { animation: none !important; } }
+  /* --- provisional wireframe for the new sections. Claude Design replaces all of this. --- */
+  main { position: relative; z-index: 1; }
+  .km-section { padding: 76px 24px; border-top: 1px solid rgba(0,0,0,0.06); }
+  .km-inner { max-width: 1040px; margin: 0 auto; }
+  .km-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #7a7a7a; margin: 0 0 14px; }
+  .km-h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 14px; max-width: 760px; }
+  .km-lede { font-size: 18px; line-height: 1.55; color: #333; margin: 0 0 32px; max-width: 640px; }
+  .km-note { font-size: 15px; color: #888; margin: 26px 0 0; }
+  .km-definition { font-size: 18px; line-height: 1.55; margin: 0 0 28px; padding: 16px 20px; border-left: 3px solid rgba(0,0,0,0.15); background: rgba(0,0,0,0.02); max-width: 760px; }
+  .km-subhead { font-size: 20px; font-weight: 600; margin: 8px 0 16px; }
+  .km-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .km-card, .km-step { border: 1px solid rgba(0,0,0,0.10); border-radius: 14px; padding: 22px; background: #fff; }
+  .km-card h3, .km-step h3 { margin: 0 0 8px; font-size: 18px; font-weight: 600; }
+  .km-card h4 { margin: 0 0 8px; font-size: 15px; font-weight: 600; }
+  .km-card p, .km-step p { margin: 0 0 8px; font-size: 15px; line-height: 1.5; color: #444; }
+  .km-step-num { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.2); font-size: 14px; margin-bottom: 10px; }
+  .km-slot { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 200px; margin: 24px 0; padding: 20px; border: 1.5px dashed rgba(0,0,0,0.22); border-radius: 16px; color: #888; font-size: 14px; background: rgba(0,0,0,0.015); }
+  .km-slot span { max-width: 520px; }
+  .km-waitlist { display: flex; gap: 10px; flex-wrap: wrap; }
+  .km-waitlist label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .km-waitlist input { width: 300px; padding: 15px 20px; font-size: 16px; border: 1px solid rgba(0,0,0,0.15); border-radius: 999px; }
+  .km-waitlist button { padding: 15px 30px; font-size: 16px; font-weight: 600; font-family: inherit; background: #000; color: #fff; border: none; border-radius: 999px; cursor: pointer; }
+  /* --- sample-draft wireframe (provisional; Claude Design replaces) --- */
+  .km-draft { max-width: 620px; border: 1px solid rgba(0,0,0,0.12); border-radius: 16px; padding: 22px; background: #fff; margin: 8px 0 0; }
+  .km-draft-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .km-draft-who { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .km-draft-avatar { width: 38px; height: 38px; border-radius: 999px; background: rgba(0,0,0,0.08); display: inline-block; }
+  .km-draft-handle { color: #888; font-size: 13px; }
+  .km-draft-tag { font-size: 12px; color: #888; border: 1px solid rgba(0,0,0,0.15); border-radius: 999px; padding: 3px 10px; }
+  .km-draft-body { font-size: 17px; line-height: 1.55; margin: 0 0 18px; }
+  .km-draft-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .km-draft-actions button { font-family: inherit; font-size: 14px; padding: 9px 18px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.18); background: #fff; cursor: pointer; }
+  .km-draft-actions button:first-child { background: #000; color: #fff; border-color: #000; }
 </style>
 </head>
 <body>
+<div style="position: relative; font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; color: #000000; background: #ffffff; min-height: 100vh; display: flex; flex-direction: column; overflow: hidden;">
 
-  <nav class="nav">
-    <div class="wrap">
-      <a class="logo" href="#">
-        <svg width="27" height="27" viewBox="0 0 124 138" fill="none" aria-hidden="true">
-          <defs><linearGradient id="km" x1="18" y1="22" x2="106" y2="118" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#9a5f2a"/><stop offset="1" stop-color="#3D1A00"/>
-          </linearGradient></defs>
-          <path d="M62 16 C92 16 112 34 112 66 C112 100 90 122 58 122 C30 122 12 102 12 72 C12 40 32 16 62 16 Z" fill="url(#km)"/>
-          <path d="M24 78 C42 60 58 54 78 58 C92 61 102 70 108 82" stroke="#0A5E5B" stroke-width="9" stroke-linecap="round" fill="none"/>
-        </svg>
-        <span class="word">karamel</span>
+  <div class="km-blob" style="position: absolute; top: -120px; left: -80px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(224,149,43,0.28), rgba(224,149,43,0) 70%); filter: blur(30px); animation: km-drift 16s ease-in-out infinite; pointer-events: none;"></div>
+  <div class="km-blob" style="position: absolute; top: 180px; right: -120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(212,124,30,0.22), rgba(212,124,30,0) 70%); filter: blur(30px); animation: km-drift 20s ease-in-out infinite reverse; pointer-events: none;"></div>
+  <div class="km-blob" style="position: absolute; bottom: -160px; left: 30%; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(240,180,90,0.20), rgba(240,180,90,0) 70%); filter: blur(30px); animation: km-drift 18s ease-in-out infinite; pointer-events: none;"></div>
+
+  <nav style="position: sticky; top: 16px; z-index: 50; margin: 16px 24px 0; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px 12px 22px; background: rgba(255,255,255,0.55); backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%); border: 1px solid rgba(255,255,255,0.7); border-radius: 22px; box-shadow: 0 8px 32px rgba(70,17,11,0.08);">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <a href="#top" style="display: flex; align-items: center; gap: 7px;">
+        <img src="assets/emblem.svg" alt="Karamel" style="height: 24px; width: auto; display: block;">
+        <span style="font-size: 22px; font-weight: 500; letter-spacing: -0.04em; color: #000000;">Karamel</span>
       </a>
-      <div class="navlinks">
-        <a href="#metric">True Reach</a><a href="#engine">The engine</a><a href="#guardrail">The guardrail</a>
-      </div>
-      <a class="btn teal" href="mailto:adiarora310@gmail.com?subject=Karamel%20early%20access">Get early access</a>
+      <a href="/app" class="signin" style="padding: 9px 18px; border-radius: 999px; font-size: 15px; font-weight: 500;">Sign in</a>
     </div>
+    <a href="#waitlist" class="cta" style="background: #000000; color: #ffffff; padding: 10px 22px; border-radius: 999px; font-size: 15px; font-weight: 500; border: none;">Join waitlist</a>
   </nav>
 
-  <header class="hero">
-    <div class="wrap grid">
-      <div>
-        <div class="kicker"><span class="dot"></span>GTM FOR BUILDERS</div>
-        <h1>Every yes is won <span class="warm">before the ask.</span></h1>
-        <p class="sub">Karamel earns you mindshare with the people whose yes you need, in your own voice. You approve. You post. Nothing ships on its own.</p>
-        <div class="cta-row">
-          <a class="btn teal" href="mailto:adiarora310@gmail.com?subject=Karamel%20early%20access">Get early access</a>
-          <span class="cta-note">Concierge pilot, small cohort, hands-on.</span>
-        </div>
-      </div>
-      <div class="shotwrap">
-        <div class="glowline"></div>
-        <div class="shot"><img src="assets/app_preview.png" alt="Karamel: the True Reach dashboard and voice-gated drafts, live product"></div>
-        <div class="shot-tag">live product, real engine</div>
-      </div>
+  <header id="top" style="position: relative; z-index: 1; flex: 1; padding: 120px 24px 150px; display: flex; justify-content: center;">
+    <div style="width: 100%; max-width: 720px; text-align: center; padding: 64px 48px 56px; background: rgba(255,255,255,0.45); backdrop-filter: blur(40px) saturate(180%); -webkit-backdrop-filter: blur(40px) saturate(180%); border: 1px solid rgba(255,255,255,0.75); border-radius: 36px; box-shadow: 0 30px 80px rgba(70,17,11,0.12), inset 0 1px 0 rgba(255,255,255,0.6);">
+      <p style="font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #46110b; margin: 0 0 22px;">PR and distribution, on autopilot</p>
+      <h1 style="font-size: clamp(38px, 8.5vw, 66px); font-weight: 500; letter-spacing: -0.045em; line-height: 1.04; margin: 0 auto 24px; max-width: 620px; text-wrap: balance;">Your story, everywhere it matters.</h1>
+      <p style="font-size: 20px; line-height: 1.6; color: #000000; max-width: 540px; margin: 0 auto 40px;">Karamel is your PR media agency in software form. We place your announcements, grow your channels, and build the distribution your work deserves.</p>
+      <form id="waitlist" onsubmit="return joinWaitlist(event)" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        <input type="email" required placeholder="you@company.com" style="width: 300px; padding: 16px 22px; font-size: 16px; border: 1px solid rgba(70,17,11,0.12); border-radius: 999px; background: rgba(255,255,255,0.7); color: #000000; outline: none;">
+        <button type="submit" id="wl-btn" class="cta" style="padding: 16px 34px; font-size: 16px; font-weight: 600; font-family: inherit; background: #000000; color: #ffffff; border: none; border-radius: 999px; cursor: pointer;">Join waitlist</button>
+      </form>
     </div>
   </header>
 
-  <section class="proof">
-    <div class="wrap row">
-      <div class="cap">30 days, one real account. Cold start, no ads, ~20 min a day.</div>
-      <div class="pstat"><div class="n">&uarr;332%</div><div class="l">Impressions, to 34.2K</div></div>
-      <div class="pstat"><div class="n">&uarr;887%</div><div class="l">Profile visits</div></div>
-      <div class="pstat"><div class="n">&uarr;259%</div><div class="l">Engagement rate, reach quadrupled</div></div>
-    </div>
-  </section>
+</div>
 
-  <section class="story" id="metric">
-    <div class="wrap">
-      <h2>Followers are rented. True Reach is owned.</h2>
-      <p class="lead">A platform can zero your follower count overnight. True Reach counts the people you can reach directly who actually engage back, and Karamel is the ledger that grows it.</p>
-      <div class="ledgerband">
-        <div class="ledger">
-          <div class="line"><span>Followers</span><b>576</b></div>
-          <div class="line"><span>True Reach, owned + two-way in 90 days</span><b>42</b></div>
-          <div class="line"><span>Champions, hot and ready when you ask</span><span class="up">6</span></div>
-          <div class="line"><span>This week</span><span class="up">+7</span></div>
+<main>
+<section id="who-its-for" class="km-section">
+  <div class="km-inner">
+    <p class="km-eyebrow">Who it is for</p>
+    <h2 class="km-h2">Built for the people who have to be seen before they can sell.</h2>
+    <p class="km-lede">If your next round, hire, or sale depends on people trusting you first, Karamel is for you.</p>
+
+    <ul class="km-grid" role="list">
+      <li class="km-card">
+        <h3>Founders raising or launching</h3>
+        <p>Warm up the investors and press you need before you ever ask, so the round and the launch land on people who already know you.</p>
+      </li>
+      <li class="km-card">
+        <h3>Solo builders shipping</h3>
+        <p>Turn the work you are already doing into a steady presence, without hiring a content team or disappearing for a week to write.</p>
+      </li>
+      <li class="km-card">
+        <h3>First sales hires and operators</h3>
+        <p>Show up in your buyers' feeds so pipeline is already warm by the time you send the note.</p>
+      </li>
+      <li class="km-card">
+        <h3>Agency owners</h3>
+        <p>Become the name clients reach for first by staying visible to them in your own voice, not just in a deck.</p>
+      </li>
+      <li class="km-card">
+        <h3>Creators building a brand</h3>
+        <p>Grow the audience that actually engages and converts, and measure it as True Reach instead of a follower count.</p>
+      </li>
+    </ul>
+
+    <p class="km-note">Not sure which one you are? If you win by relationships, you are in the right place.</p>
+  </div>
+</section>
+
+<section id="how-it-works" class="km-section" aria-labelledby="how-it-works-title">
+  <div class="km-inner">
+    <p class="km-eyebrow">How it works</p>
+    <h2 id="how-it-works-title" class="km-h2">Three steps. You approve every one.</h2>
+    <p class="km-lede">Connect your channels, get drafts in your own voice, and approve before anything goes out.</p>
+
+    <ol class="km-grid">
+      <li class="km-step" aria-labelledby="step-1-title">
+        <span class="km-step-num" aria-hidden="true">1</span>
+        <h3 id="step-1-title">Connect your channels</h3>
+        <p>Link X and LinkedIn in a couple of clicks. Karamel reads how you already write and who actually engages with you, so the drafts sound like you from day one.</p>
+      </li>
+
+      <li class="km-step" aria-labelledby="step-2-title">
+        <span class="km-step-num" aria-hidden="true">2</span>
+        <h3 id="step-2-title">Karamel drafts in your voice</h3>
+        <p>Posts and replies, written the way you talk. Not a generic brand voice, yours. Every draft lands in a queue for you to read, edit, or kill.</p>
+      </li>
+
+      <li class="km-step" aria-labelledby="step-3-title">
+        <span class="km-step-num" aria-hidden="true">3</span>
+        <h3 id="step-3-title">You review, approve, and it posts</h3>
+        <p>Change a word or a whole line, then approve. Karamel posts on your schedule. You always hit send.</p>
+      </li>
+    </ol>
+
+    <div class="km-card" role="note" aria-labelledby="curate-guarantee-title">
+      <h3 id="curate-guarantee-title">Curate only. Nothing goes out until you approve it.</h3>
+      <p>Karamel never auto-posts and never sends on your behalf. Every draft waits in your queue until you say go, so every post is yours before it ships. Every yes is won before the ask.</p>
+    </div>
+  </div>
+</section>
+
+<section id="product" class="km-section">
+  <div class="km-inner">
+    <p class="km-eyebrow">The product, shown</p>
+    <h2 class="km-h2">The app is one decision a day, not a project.</h2>
+    <p class="km-lede">Open Karamel once. Approve the drafts that sound like you, skip the ones that don't, and watch True Reach climb.</p>
+
+    <div class="km-slot" role="img" aria-label="Product screenshot of the Karamel app: on the left, a daily feed of drafted posts each with Approve and Skip buttons; on the right, a True Reach dashboard charting owned audience and two-way engagement over time.">
+      <span>Product screenshot: the daily feed of drafted posts (Approve or Skip) next to the True Reach dashboard.</span>
+    </div>
+
+    <ul class="km-grid">
+      <li class="km-card">
+        <h3>A daily feed you clear in minutes</h3>
+        <p>A short stack of drafts, written in your voice. Approve or skip each one. You always hit send.</p>
+      </li>
+      <li class="km-card">
+        <h3>A dashboard for True Reach</h3>
+        <p>Track owned audience plus the people who genuinely engage both ways, the reach that turns into relationships and revenue. Not follower counts.</p>
+      </li>
+      <li class="km-card">
+        <h3>Nothing goes out without you</h3>
+        <p>Karamel drafts. You decide. It never auto-posts and never sends on your behalf.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="sample-draft" class="km-section" aria-labelledby="sample-draft-title">
+  <div class="km-inner">
+    <p class="km-eyebrow">See it in your voice</p>
+    <h2 id="sample-draft-title" class="km-h2">This is what Karamel drafts. You approve it before it ships.</h2>
+    <p class="km-lede">A real draft, written the way you talk. Read it, tweak it, or send it back. Nothing goes out until you say go.</p>
+
+    <article class="km-draft" aria-label="Sample drafted post awaiting your approval">
+      <header class="km-draft-head">
+        <div class="km-draft-who">
+          <span class="km-draft-avatar" aria-hidden="true"></span>
+          <span><strong>You</strong><br><span class="km-draft-handle">drafted by Karamel, pending your approval</span></span>
         </div>
-        <div class="pts">
-          <div class="pt hot">
-            <h4>The anti-vanity number</h4>
-            <p>Likes and follows never count. Only a real two-way exchange in the last 90 days does.</p>
-          </div>
-          <div class="pt">
-            <h4>Computed, not claimed</h4>
-            <p>Built from your own data, locally. Every contact carries the why and the when.</p>
-          </div>
-          <div class="pt">
-            <h4>The number that pays</h4>
-            <p>When you raise, sell, or hire, the warm list is already sitting there.</p>
-          </div>
-        </div>
+        <span class="km-draft-tag">Draft</span>
+      </header>
+      <p class="km-draft-body">Most founders think distribution is a megaphone problem. It is not. It is a trust problem. The people who fund you, hire you, and buy from you were watching for months before they ever replied. You do not win the ask in the room. You win it in the feed, one honest post at a time.</p>
+      <div class="km-draft-actions">
+        <button type="button">Approve</button>
+        <button type="button">Edit</button>
+        <button type="button">Skip</button>
       </div>
-    </div>
-  </section>
+    </article>
 
-  <section class="engine" id="engine">
-    <div class="wrap grid">
-      <div class="flowcard">
-        <div class="fstep"><span class="no">01</span>Signals: what your corner of the market is moving on this week</div>
-        <div class="fstep"><span class="no">02</span>Drafts written in your voice, from what you are actually building</div>
-        <div class="fstep"><span class="no">03</span>A critic grades every draft against your voice. Flat drafts die here.</div>
-        <div class="fstep you"><span class="no">04</span>You approve. You post. Every word ships by your hand.</div>
-      </div>
-      <div>
-        <h2>Your voice, at a cadence you could never keep alone.</h2>
-        <p>Karamel reads what is moving in your market and drafts posts and replies that sound like you on your best day.</p>
-        <p>The voice gate is the difference: a separate critic scores every draft for voice, take, and specificity before it ever reaches you.</p>
-      </div>
-    </div>
-  </section>
+    <p class="km-note">Provisional sample. In the product this is drafted from your own writing, then it waits for your yes.</p>
+  </div>
+</section>
 
-  <section class="guard" id="guardrail">
-    <div class="wrap inner">
-      <div>
-        <h2>The guardrail is the product.</h2>
-        <p>Karamel never posts, replies, or messages anyone on its own. No automation pretending to be you, no bot outreach, no account risk. That is why the relationships it builds are real.</p>
-      </div>
-      <div class="stamp">no auto-posting<br>no auto-DMs<br>no impersonation<br>you hold the send button</div>
-    </div>
-  </section>
+<section id="true-reach" class="km-section" aria-labelledby="true-reach-title">
+  <div class="km-inner">
+    <p class="km-eyebrow">The metric</p>
+    <h2 id="true-reach-title" class="km-h2">True Reach counts the people who actually show up.</h2>
+    <p class="km-lede">Your owned audience plus the people who engage with you both ways. Not the follower number, the number that converts.</p>
 
-  <section class="final">
-    <div class="wrap grid">
-      <div>
-        <h2>Build the distribution you actually own.</h2>
-        <p>Early access is concierge-first: a small cohort, hands-on, measured in True Reach, not impressions.</p>
-        <a class="btn teal" href="mailto:adiarora310@gmail.com?subject=Karamel%20early%20access">Get early access</a>
-      </div>
-      <div class="side">
-        the pilot includes<br>
-        voice card built from your real writing<br>
-        daily gated drafts, you hit send<br>
-        your True Reach baseline and weekly delta
-      </div>
-    </div>
-  </section>
+    <p class="km-definition">True Reach = the audience you own (email, subscribers, direct contacts) + the people who reply, share, and message you back. Everyone else is just a count.</p>
 
-  <footer>
-    <div class="wrap">
-      <span>Karamel. GTM for builders.</span>
-      <a href="mailto:adiarora310@gmail.com">adiarora310@gmail.com</a>
+    <div class="km-slot" role="img" aria-label="Illustrative metric visual: a large follower count shrinking down to the smaller True Reach number, showing that most followers never engage two ways.">
+      <span class="km-slot-label">Metric visual: 40,000 followers narrowing to 2,300 True Reach (owned audience plus two-way engagers)</span>
+    </div>
+
+    <h3 class="km-subhead">True Reach vs vanity metrics</h3>
+    <ul class="km-grid" aria-label="How True Reach differs from vanity metrics">
+      <li class="km-card">
+        <h4>What it counts</h4>
+        <p><strong>Vanity:</strong> every follower, including bots, ghosts, and people who scrolled past once.</p>
+        <p><strong>True Reach:</strong> the audience you own plus the people who reply, share, and DM.</p>
+      </li>
+      <li class="km-card">
+        <h4>Which direction it moves</h4>
+        <p><strong>Vanity:</strong> one way. They see you, you never hear back.</p>
+        <p><strong>True Reach:</strong> two ways. You are actually in a conversation.</p>
+      </li>
+      <li class="km-card">
+        <h4>What it predicts</h4>
+        <p><strong>Vanity:</strong> a bigger number on a dashboard.</p>
+        <p><strong>True Reach:</strong> the relationships and revenue that follow from them.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="trust" class="km-section">
+  <div class="km-inner">
+    <p class="km-eyebrow">Trust and the guardrail</p>
+    <h2 class="km-h2">Karamel drafts. You always hit send.</h2>
+    <p class="km-lede">Your name goes on it, so you stay in control of every word. Here is the promise, in plain terms.</p>
+
+    <ul class="km-grid" role="list">
+      <li class="km-card">
+        <h3>Nothing posts without you</h3>
+        <p>Karamel never auto-posts and never sends on your behalf. Every draft waits for you. You hit send, or it stays put.</p>
+      </li>
+      <li class="km-card">
+        <h3>Your voice stays yours</h3>
+        <p>We draft in the way you already talk, not in generic AI cadence. If it does not sound like you, it does not go out.</p>
+      </li>
+      <li class="km-card">
+        <h3>Edit or skip anything</h3>
+        <p>Rewrite a line, change the whole thing, or throw it away. No draft is an obligation. You are never on the hook to post.</p>
+      </li>
+      <li class="km-card">
+        <h3>This is not slop</h3>
+        <p>A draft is a starting point you approve, not a firehose of filler. You decide what is worth your audience's attention.</p>
+      </li>
+    </ul>
+
+    <figure class="km-slot" role="img" aria-label="Product view: a Karamel draft in review, showing an Edit control, a Skip control, and a Send button that only the user can press">
+      <span>Draft in review: Edit, Skip, and a Send button that only you can press</span>
+    </figure>
+
+    <p class="km-note">Every yes is won before the ask. That only works if the words are truly yours, so we made sure they always are.</p>
+  </div>
+</section>
+
+<section id="closing-cta" class="km-section">
+  <div class="km-inner">
+    <p class="km-eyebrow">Waitlist</p>
+    <h2 class="km-h2">Every yes is won before the ask. Start winning them.</h2>
+    <p class="km-lede">Karamel drafts in your voice, you approve, you post. Get in line before the doors open.</p>
+    <form class="km-waitlist" onsubmit="return joinWaitlist(event)">
+      <label for="closing-cta-email">Email address</label>
+      <input
+        id="closing-cta-email"
+        name="email"
+        type="email"
+        required
+        autocomplete="email"
+        placeholder="you@company.com"
+        aria-label="Email address"
+      />
+      <button type="submit">Join waitlist</button>
+    </form>
+  </div>
+</section>
+</main>
+
+  <footer style="position: relative; z-index: 1; margin: 0 24px 24px; padding: 28px 32px; background: rgba(245,236,231,0.55); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); border: 1px solid rgba(255,255,255,0.6); border-radius: 24px;">
+    <div style="max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 7px;">
+        <img src="assets/emblem.svg" alt="" style="height: 20px; width: auto;">
+        <span style="font-size: 18px; font-weight: 500; letter-spacing: -0.04em; color: #000000;">Karamel</span>
+      </div>
+      <span style="font-size: 14px; color: #5a2a19;">&copy; 2026 Karamel</span>
     </div>
   </footer>
 
+<script>
+  // Waitlist capture.
+  // Emails post to a Google Form you own (free, lands in a Google Sheet you control).
+  // One-time setup: make a Google Form with a single short-answer "email" question, then paste:
+  //   FORM_ACTION  the form's ".../formResponse" URL
+  //   EMAIL_FIELD  the "entry.XXXXXXXXX" id of the email question
+  // Until both are set, a submit is logged to the console and nothing is stored yet.
+  var FORM_ACTION = "";
+  var EMAIL_FIELD = "";
+
+  function joinWaitlist(e){
+    e.preventDefault();
+    var form = e.target;
+    var input = form.querySelector('input[type=email]');
+    var btn = form.querySelector('button[type=submit]');
+    var email = (input.value || "").trim();
+    if(!email){ return false; }
+
+    btn.disabled = true;
+    btn.textContent = "Adding you…";
+
+    function success(){
+      btn.textContent = "You're on the list";
+      btn.style.opacity = "0.8";
+      input.disabled = true;
+    }
+    function failure(){
+      btn.disabled = false;
+      btn.textContent = "Try again";
+    }
+
+    if(!FORM_ACTION || !EMAIL_FIELD){
+      console.warn("[waitlist] capture not configured yet, email:", email);
+      success();
+      return false;
+    }
+
+    var body = new URLSearchParams();
+    body.append(EMAIL_FIELD, email);
+    fetch(FORM_ACTION, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: body.toString()
+    }).then(success).catch(failure);
+
+    return false;
+  }
+</script>
+<script>
+/* dev live-reload: localhost only. Polls this file and reloads when it changes. Inert in production. */
+(function(){
+  if(!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){ return; }
+  var seen = null;
+  setInterval(function(){
+    fetch(location.pathname, { method:"HEAD", cache:"no-store" }).then(function(r){
+      var m = r.headers.get("Last-Modified");
+      if(seen && m && m !== seen){ location.reload(); }
+      seen = m;
+    }).catch(function(){});
+  }, 1000);
+})();
+</script>
 </body>
 </html>
