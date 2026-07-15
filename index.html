@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Karamel, your PR media agency in software form</title>
-<meta name="description" content="Karamel is the agency that gets you seen, without the retainer. It drafts your posts, places your announcements, and grows your channels. You approve every word before it goes out.">
+<title>Karamel, build the distribution you actually own</title>
+<meta name="description" content="Karamel turns what you are building into media in your own voice, publishes it where your audience already is, and compounds it into relationships you own. You approve every word.">
 <link rel="icon" href="assets/emblem.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,26 +14,21 @@
   html { scroll-behavior: smooth; }
   a { color: #46110b; text-decoration: none; }
   a:hover { color: #c67e1d; }
-  textarea { font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; }
   input.km-field { font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; }
   input.km-field::placeholder { color: #a9998f; }
-  @keyframes km-fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes km-drift { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-24px) scale(1.08); } }
+  @keyframes km-drift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-26px,20px) scale(1.1); } }
   @keyframes km-pulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: .4; } }
+  @keyframes km-fade { from { opacity: 0; } to { opacity: 1; } }
   @keyframes km-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
   @keyframes km-pop { 0% { opacity: 0; transform: scale(.94) translateY(6px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
   @keyframes km-check { 0% { stroke-dashoffset: 26; } 100% { stroke-dashoffset: 0; } }
   /* hover and focus states (converted from the design's inline hover/focus attributes) */
   .km-btn-primary:hover { background: #1a1a1a; transform: translateY(-1px); }
   .km-btn-ghost:hover { color: #c67e1d; }
-  .km-card:hover { border-color: #e0952b; }
   .km-field:focus { border-color: #e0952b; box-shadow: inset 0 1px 2px rgba(70,17,11,0.05), 0 0 0 4px rgba(224,149,43,0.18); }
   .km-wl-submit:hover { background: #1a1a1a; transform: translateY(-1px); }
-  .km-approve:hover { background: #1a1a1a; transform: translateY(-1px); }
-  .km-edit-btn:hover { border-color: #e0952b; color: #c67e1d; }
-  .km-skip:hover { color: #46110b; }
-  .km-save:hover { background: #1a1a1a; }
-  .km-cancel:hover { color: #46110b; }
-  .km-undo:hover { color: #c67e1d; }
+  .km-approve:hover { background: #1a1a1a; }
   @media (prefers-reduced-motion: reduce){ [style*="animation"] { animation: none !important; } }
 </style>
 </head>
@@ -41,7 +36,7 @@
 <div style="position: relative; font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; color: #46110b; background: #ffffff; overflow-x: hidden;">
 
   <!-- 1. NAV -->
-  <div style="padding: 0 16px; position: relative; z-index: 2;">
+  <div style="padding: 0 16px; position: relative; z-index: 3;">
     <nav style="position: sticky; top: 14px; z-index: 50; margin: 14px auto 0; max-width: 1120px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px 10px 18px; background: rgba(255,255,255,0.7); backdrop-filter: blur(22px) saturate(180%); -webkit-backdrop-filter: blur(22px) saturate(180%); border: 1px solid rgba(255,255,255,0.9); border-radius: 18px; box-shadow: inset 0 1px 1px rgba(255,255,255,0.9), 0 0 0 1px rgba(70,17,11,0.06), 0 10px 30px rgba(70,17,11,0.08); font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; box-sizing: border-box;">
       <a href="#top" style="display: flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0; min-width: 0;">
         <img src="assets/emblem.svg" alt="Karamel" style="height: 26px; width: auto; display: block;">
@@ -55,11 +50,13 @@
   </div>
 
   <!-- 2. HERO -->
-  <header id="top" style="position: relative; z-index: 1; padding: clamp(64px,10vw,120px) 24px clamp(72px,9vw,110px); overflow: hidden;">
-    <div style="position: relative; z-index: 1; max-width: 760px; margin: 0 auto; text-align: center; padding: clamp(40px,5vw,64px) clamp(26px,5vw,56px); background: linear-gradient(155deg, rgba(255,255,255,0.93), rgba(252,248,244,0.72) 55%, rgba(255,250,244,0.88)); border: 1px solid rgba(255,255,255,0.94); box-shadow: inset 0 1px 1px rgba(255,255,255,0.97), 0 0 0 1px rgba(70,17,11,0.05), 0 18px 40px rgba(70,17,11,0.09), 0 40px 80px rgba(70,17,11,0.07); border-radius: 34px;">
-      <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #c67e1d; margin: 0 0 22px;">Your PR media agency, in software form</p>
-      <h1 style="font-size: clamp(40px,7.5vw,74px); font-weight: 600; letter-spacing: -0.045em; line-height: 1.02; margin: 0 auto 24px; max-width: 760px; text-wrap: balance; color: #46110b;">The agency that gets you seen. Without the retainer.</h1>
-      <p style="font-size: clamp(17px,2.2vw,21px); line-height: 1.6; color: #6a4a40; max-width: 580px; margin: 0 auto 40px; text-wrap: pretty;">Karamel drafts your posts, places your announcements, and grows your channels. You approve every word before it goes out.</p>
+  <header id="top" style="position: relative; z-index: 1; padding: clamp(60px,9vw,116px) 24px clamp(64px,8vw,100px); overflow: hidden;">
+    <div style="position: absolute; top: -120px; left: -60px; width: 480px; height: 480px; border-radius: 50%; background: radial-gradient(circle, rgba(224,149,43,0.28), rgba(224,149,43,0) 70%); filter: blur(20px); animation: km-drift 18s ease-in-out infinite; pointer-events: none;"></div>
+    <div style="position: absolute; top: 20px; right: -100px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(212,124,30,0.2), rgba(212,124,30,0) 70%); filter: blur(22px); animation: km-drift2 23s ease-in-out infinite; pointer-events: none;"></div>
+    <div style="position: relative; z-index: 1; max-width: 780px; margin: 0 auto; text-align: center; padding: clamp(40px,5vw,64px) clamp(26px,5vw,56px); background: linear-gradient(155deg, rgba(255,255,255,0.93), rgba(252,248,244,0.72) 55%, rgba(255,250,244,0.88)); border: 1px solid rgba(255,255,255,0.94); border-radius: 34px; box-shadow: inset 0 1px 1px rgba(255,255,255,0.97), 0 0 0 1px rgba(70,17,11,0.05), 0 18px 40px rgba(70,17,11,0.09), 0 40px 80px rgba(70,17,11,0.07);">
+      <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #c67e1d; margin: 0 0 22px;">The GTM engine for people who sell through who they are</p>
+      <h1 style="font-size: clamp(40px,7.2vw,72px); font-weight: 600; letter-spacing: -0.045em; line-height: 1.02; margin: 0 auto 24px; max-width: 720px; text-wrap: balance; color: #46110b;">Build the distribution you actually own.</h1>
+      <p style="font-size: clamp(17px,2.1vw,21px); line-height: 1.6; color: #6a4a40; max-width: 620px; margin: 0 auto 40px; text-wrap: pretty;">Karamel turns what you are building into media in your own voice, publishes it where your audience already is, and compounds it into relationships you own. You approve every word.</p>
       <div class="km-wl" style="width: 100%; max-width: 480px; margin: 0 auto; font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif;">
         <div class="km-wl-joined" style="display: none; align-items: center; gap: 14px; padding: 18px 22px; background: linear-gradient(155deg, rgba(252,240,223,0.95), rgba(248,228,200,0.7)); border: 1px solid rgba(255,248,238,0.95); border-radius: 18px; box-shadow: inset 0 1px 1px rgba(255,255,255,0.9), 0 0 0 1px rgba(224,149,43,0.2), 0 10px 26px rgba(176,110,30,0.10); animation: km-pop .38s cubic-bezier(.2,.8,.2,1) both;">
           <span style="width: 38px; height: 38px; border-radius: 50%; background: #e0952b; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
@@ -81,104 +78,73 @@
     </div>
   </header>
 
-  <!-- 3. WHO IT'S FOR -->
-  <section data-reveal style="position: relative; z-index: 1; padding: clamp(64px,8vw,104px) 24px;">
-    <div style="max-width: 1120px; margin: 0 auto;">
-      <div style="max-width: 720px; margin: 0 0 clamp(36px,5vw,56px);">
-        <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #c67e1d; margin: 0 0 16px;">Who it's for</p>
-        <h2 style="font-size: clamp(32px,4.6vw,50px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.08; margin: 0 0 18px; color: #46110b; text-wrap: balance;">You have to be seen before you can sell.</h2>
-        <p style="font-size: clamp(17px,1.9vw,20px); line-height: 1.6; color: #6a4a40; margin: 0; text-wrap: pretty;">Great work does not distribute itself. Karamel is for the people who know that, and do not have a press team on payroll.</p>
+  <!-- 3. THE BET / WHY NOW -->
+  <section data-reveal style="position: relative; z-index: 1; padding: clamp(60px,8vw,100px) 24px;">
+    <div style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(28px,4vw,52px); align-items: start;">
+      <div>
+        <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #c67e1d; margin: 0 0 16px;">The bet</p>
+        <h2 style="font-size: clamp(32px,4.4vw,50px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.07; margin: 0 0 20px; color: #46110b; text-wrap: balance;">AI made outreach free, which made it worthless.</h2>
+        <p style="font-size: clamp(17px,1.9vw,20px); line-height: 1.62; color: #6a4a40; margin: 0 0 18px; text-wrap: pretty;">People filter generic messages, and they hate buying from bots. The one thing that got more valuable is the opposite of a bot: a real person, building in public, whose audience feels like they know them.</p>
+        <p style="font-size: clamp(17px,1.9vw,20px); line-height: 1.62; color: #6a4a40; margin: 0; text-wrap: pretty;">Those relationships are the last distribution that does not vanish the day you stop paying a platform. Being the person people trust enough to buy from is the hardest thing to build, and the most durable currency there is.</p>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 4px 28px;">
-        <div class="km-card" style="display: flex; flex-direction: column; gap: 8px; padding: 22px 4px 22px 20px; border-left: 1px solid #eceae6; height: 100%; box-sizing: border-box; font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; transition: border-color .2s ease;">
-          <div style="display: flex; align-items: baseline; gap: 10px;">
-            <span style="width: 6px; height: 6px; border-radius: 50%; background: #e0952b; flex-shrink: 0; transform: translateY(-2px);"></span>
-            <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.02em; color: #46110b; line-height: 1.15;">Founders</span>
-          </div>
-          <div style="font-size: 15px; line-height: 1.5; color: #6a4a40; padding-left: 16px;">Raising, launching, or hiring. Keep your narrative in market while you run the company.</div>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="background: linear-gradient(155deg, rgba(252,240,223,0.92), rgba(246,223,192,0.64) 55%, rgba(250,232,206,0.85)); border: 1px solid rgba(255,248,238,0.92); box-shadow: inset 0 1px 1px rgba(255,255,255,0.9), 0 0 0 1px rgba(224,149,43,0.18), 0 12px 30px rgba(176,110,30,0.10), 0 30px 60px rgba(176,110,30,0.06); border-radius: 20px; padding: 28px 30px;">
+          <p style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #c67e1d; margin: 0 0 12px;">Why now</p>
+          <p style="font-size: clamp(17px,1.9vw,20px); line-height: 1.55; color: #46110b; margin: 0; text-wrap: pretty;">The most credible voices in tech agree: every founder is now a media company, and owning your distribution is the moat.</p>
         </div>
-        <div class="km-card" style="display: flex; flex-direction: column; gap: 8px; padding: 22px 4px 22px 20px; border-left: 1px solid #eceae6; height: 100%; box-sizing: border-box; font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; transition: border-color .2s ease;">
-          <div style="display: flex; align-items: baseline; gap: 10px;">
-            <span style="width: 6px; height: 6px; border-radius: 50%; background: #e0952b; flex-shrink: 0; transform: translateY(-2px);"></span>
-            <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.02em; color: #46110b; line-height: 1.15;">Solo builders</span>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div style="background: linear-gradient(155deg, rgba(255,255,255,0.9), rgba(252,248,244,0.66) 55%, rgba(255,250,244,0.82)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(70,17,11,0.05), 0 10px 24px rgba(70,17,11,0.06); border-radius: 18px; padding: 22px;">
+            <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #a9998f; margin-bottom: 8px;">Demand</div>
+            <div style="font-size: 15px; line-height: 1.5; color: #6a4a40;">Proven. Founders already know they have to build an audience.</div>
           </div>
-          <div style="font-size: 15px; line-height: 1.5; color: #6a4a40; padding-left: 16px;">Shipping alone. Turn every release into an announcement people actually see.</div>
-        </div>
-        <div class="km-card" style="display: flex; flex-direction: column; gap: 8px; padding: 22px 4px 22px 20px; border-left: 1px solid #eceae6; height: 100%; box-sizing: border-box; font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; transition: border-color .2s ease;">
-          <div style="display: flex; align-items: baseline; gap: 10px;">
-            <span style="width: 6px; height: 6px; border-radius: 50%; background: #e0952b; flex-shrink: 0; transform: translateY(-2px);"></span>
-            <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.02em; color: #46110b; line-height: 1.15;">Marketing teams</span>
+          <div style="background: linear-gradient(155deg, rgba(255,255,255,0.9), rgba(252,248,244,0.66) 55%, rgba(255,250,244,0.82)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(70,17,11,0.05), 0 10px 24px rgba(70,17,11,0.06); border-radius: 18px; padding: 22px;">
+            <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c67e1d; margin-bottom: 8px;">The gap</div>
+            <div style="font-size: 15px; line-height: 1.5; color: #6a4a40;">The tools are bad at the one thing that matters: sounding like you.</div>
           </div>
-          <div style="font-size: 15px; line-height: 1.5; color: #6a4a40; padding-left: 16px;">Small team, big calendar. Add an always-on channel without another hire.</div>
-        </div>
-        <div class="km-card" style="display: flex; flex-direction: column; gap: 8px; padding: 22px 4px 22px 20px; border-left: 1px solid #eceae6; height: 100%; box-sizing: border-box; font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; transition: border-color .2s ease;">
-          <div style="display: flex; align-items: baseline; gap: 10px;">
-            <span style="width: 6px; height: 6px; border-radius: 50%; background: #e0952b; flex-shrink: 0; transform: translateY(-2px);"></span>
-            <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.02em; color: #46110b; line-height: 1.15;">Creators and writers</span>
-          </div>
-          <div style="font-size: 15px; line-height: 1.5; color: #6a4a40; padding-left: 16px;">Your ideas deserve reach. Stay consistent without living in the drafts folder.</div>
-        </div>
-        <div class="km-card" style="display: flex; flex-direction: column; gap: 8px; padding: 22px 4px 22px 20px; border-left: 1px solid #eceae6; height: 100%; box-sizing: border-box; font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; transition: border-color .2s ease;">
-          <div style="display: flex; align-items: baseline; gap: 10px;">
-            <span style="width: 6px; height: 6px; border-radius: 50%; background: #e0952b; flex-shrink: 0; transform: translateY(-2px);"></span>
-            <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.02em; color: #46110b; line-height: 1.15;">Consultants</span>
-          </div>
-          <div style="font-size: 15px; line-height: 1.5; color: #6a4a40; padding-left: 16px;">Your pipeline runs on reputation. Show up as the expert, every week.</div>
-        </div>
-        <div class="km-card" style="display: flex; flex-direction: column; gap: 8px; padding: 22px 4px 22px 20px; border-left: 1px solid #eceae6; height: 100%; box-sizing: border-box; font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; transition: border-color .2s ease;">
-          <div style="display: flex; align-items: baseline; gap: 10px;">
-            <span style="width: 6px; height: 6px; border-radius: 50%; background: #e0952b; flex-shrink: 0; transform: translateY(-2px);"></span>
-            <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.02em; color: #46110b; line-height: 1.15;">Investors</span>
-          </div>
-          <div style="font-size: 15px; line-height: 1.5; color: #6a4a40; padding-left: 16px;">Back it loudly. Amplify portfolio wins and your own point of view.</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 4. HOW IT WORKS -->
-  <section data-reveal style="position: relative; z-index: 1; padding: clamp(64px,8vw,104px) 24px;">
+  <section data-reveal style="position: relative; z-index: 1; padding: clamp(60px,8vw,100px) 24px;">
     <div style="max-width: 1120px; margin: 0 auto;">
-      <div style="max-width: 720px; margin: 0 0 clamp(36px,5vw,56px);">
+      <div style="max-width: 720px; margin: 0 0 clamp(32px,4vw,48px);">
         <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #c67e1d; margin: 0 0 16px;">How it works</p>
-        <h2 style="font-size: clamp(32px,4.6vw,50px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.08; margin: 0; color: #46110b; text-wrap: balance;">Like a great agency. Minus the meetings.</h2>
+        <h2 style="font-size: clamp(32px,4.4vw,50px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.08; margin: 0; color: #46110b; text-wrap: balance;">From what you are building to revenue you own.</h2>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 24px;">
-        <div style="background: linear-gradient(155deg, rgba(255,255,255,0.9), rgba(252,248,244,0.66) 55%, rgba(255,250,244,0.82)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(70,17,11,0.05), 0 10px 24px rgba(70,17,11,0.06), 0 26px 52px rgba(70,17,11,0.05); border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
-          <div style="width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid #e0952b; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #c67e1d; font-variant-numeric: tabular-nums;">1</div>
-          <div style="font-size: 21px; font-weight: 600; letter-spacing: -0.02em; color: #46110b;">Brief it once</div>
-          <div style="font-size: 15px; line-height: 1.55; color: #6a4a40;">Point Karamel at your product, your posts, and your announcements. It learns your voice in an afternoon.</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+        <div style="background: linear-gradient(155deg, rgba(255,255,255,0.9), rgba(252,248,244,0.66) 55%, rgba(255,250,244,0.82)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(70,17,11,0.05), 0 10px 24px rgba(70,17,11,0.06), 0 26px 52px rgba(70,17,11,0.05); border-radius: 20px; padding: 30px 26px; display: flex; flex-direction: column; gap: 14px; height: 100%; box-sizing: border-box;">
+          <div style="width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid #e0952b; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 700; color: #c67e1d; font-variant-numeric: tabular-nums;">1</div>
+          <div style="font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: #46110b; line-height: 1.15;">Reads your field, and your work</div>
+          <div style="font-size: 15px; line-height: 1.55; color: #6a4a40;">Karamel tracks your field in real time and the arc of what you are building, and finds what your audience actually wants to hear from you.</div>
         </div>
-        <div style="background: linear-gradient(155deg, rgba(255,255,255,0.9), rgba(252,248,244,0.66) 55%, rgba(255,250,244,0.82)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(70,17,11,0.05), 0 10px 24px rgba(70,17,11,0.06), 0 26px 52px rgba(70,17,11,0.05); border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
-          <div style="width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid #e0952b; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #c67e1d; font-variant-numeric: tabular-nums;">2</div>
-          <div style="font-size: 21px; font-weight: 600; letter-spacing: -0.02em; color: #46110b;">Review the daily drafts</div>
-          <div style="font-size: 15px; line-height: 1.55; color: #6a4a40;">Every morning, a feed of ready-to-send posts and pitches waiting in your voice, not a template’s.</div>
+        <div style="background: linear-gradient(155deg, rgba(255,255,255,0.9), rgba(252,248,244,0.66) 55%, rgba(255,250,244,0.82)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(70,17,11,0.05), 0 10px 24px rgba(70,17,11,0.06), 0 26px 52px rgba(70,17,11,0.05); border-radius: 20px; padding: 30px 26px; display: flex; flex-direction: column; gap: 14px; height: 100%; box-sizing: border-box;">
+          <div style="width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid #e0952b; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 700; color: #c67e1d; font-variant-numeric: tabular-nums;">2</div>
+          <div style="font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: #46110b; line-height: 1.15;">Crafted for each destination</div>
+          <div style="font-size: 15px; line-height: 1.55; color: #6a4a40;">Incisive on X, considered on LinkedIn. Every piece waits on your approval. You always publish. Nothing is ever automated for your audience.</div>
         </div>
-        <div style="background: linear-gradient(155deg, rgba(255,255,255,0.9), rgba(252,248,244,0.66) 55%, rgba(255,250,244,0.82)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(70,17,11,0.05), 0 10px 24px rgba(70,17,11,0.06), 0 26px 52px rgba(70,17,11,0.05); border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; gap: 14px;">
-          <div style="width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid #e0952b; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #c67e1d; font-variant-numeric: tabular-nums;">3</div>
-          <div style="font-size: 21px; font-weight: 600; letter-spacing: -0.02em; color: #46110b;">Approve and it ships</div>
-          <div style="font-size: 15px; line-height: 1.55; color: #6a4a40;">Tap approve. Karamel places it on your channels and with the right outlets, at the right moment.</div>
+        <div style="background: linear-gradient(155deg, rgba(255,255,255,0.9), rgba(252,248,244,0.66) 55%, rgba(255,250,244,0.82)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(70,17,11,0.05), 0 10px 24px rgba(70,17,11,0.06), 0 26px 52px rgba(70,17,11,0.05); border-radius: 20px; padding: 30px 26px; display: flex; flex-direction: column; gap: 14px; height: 100%; box-sizing: border-box;">
+          <div style="width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid #e0952b; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 700; color: #c67e1d; font-variant-numeric: tabular-nums;">3</div>
+          <div style="font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: #46110b; line-height: 1.15;">A channel you own outright</div>
+          <div style="font-size: 15px; line-height: 1.55; color: #6a4a40;">Your strongest work consolidates into a long-form medium, the one channel that does not answer to an algorithm.</div>
         </div>
-      </div>
-      <div style="display: flex; align-items: flex-start; gap: 18px; background: linear-gradient(155deg, rgba(252,240,223,0.92), rgba(246,223,192,0.64) 55%, rgba(250,232,206,0.85)); border: 1px solid rgba(255,248,238,0.92); box-shadow: inset 0 1px 1px rgba(255,255,255,0.9), 0 0 0 1px rgba(224,149,43,0.18), 0 12px 30px rgba(176,110,30,0.10), 0 30px 60px rgba(176,110,30,0.06); border-radius: 20px; padding: clamp(24px,3vw,32px) clamp(24px,3vw,36px); flex-wrap: wrap;">
-        <div style="width: 46px; height: 46px; border-radius: 13px; background: #e0952b; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l7 3v6c0 4.4-2.9 8.3-7 9.5C7.9 19.3 5 15.4 5 11V5l7-3z" stroke="#46110b" stroke-width="1.8" fill="#ffffff"/><path d="M9 11.5l2 2 4-4.5" stroke="#46110b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div style="flex: 1; min-width: 240px;">
-          <div style="font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: #46110b; margin-bottom: 6px;">Curate, never autopilot.</div>
-          <div style="font-size: 16px; line-height: 1.55; color: #6a4a40;">Karamel drafts. You approve. Nothing goes out until you say go. Your account, your name, your call, every single time.</div>
+        <div style="background: linear-gradient(155deg, rgba(255,255,255,0.9), rgba(252,248,244,0.66) 55%, rgba(255,250,244,0.82)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(70,17,11,0.05), 0 10px 24px rgba(70,17,11,0.06), 0 26px 52px rgba(70,17,11,0.05); border-radius: 20px; padding: 30px 26px; display: flex; flex-direction: column; gap: 14px; height: 100%; box-sizing: border-box;">
+          <div style="width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid #e0952b; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 700; color: #c67e1d; font-variant-numeric: tabular-nums;">4</div>
+          <div style="font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: #46110b; line-height: 1.15;">Compounds into revenue</div>
+          <div style="font-size: 15px; line-height: 1.55; color: #6a4a40;">Reputation compounds into relationships, relationships into warm leads, and warm leads into revenue.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 5. THE PRODUCT, SHOWN -->
-  <section data-reveal style="position: relative; z-index: 1; padding: clamp(64px,8vw,104px) 24px;">
+  <!-- 5. THE PRODUCT -->
+  <section data-reveal style="position: relative; z-index: 1; padding: clamp(60px,8vw,100px) 24px;">
     <div style="max-width: 1120px; margin: 0 auto;">
-      <div style="max-width: 720px; margin: 0 0 clamp(32px,4vw,44px);">
+      <div style="max-width: 720px; margin: 0 0 clamp(30px,4vw,44px);">
         <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #c67e1d; margin: 0 0 16px;">The product</p>
-        <h2 style="font-size: clamp(32px,4.6vw,50px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.08; margin: 0 0 18px; color: #46110b; text-wrap: balance;">Your whole channel, in one morning feed.</h2>
-        <p style="font-size: clamp(17px,1.9vw,20px); line-height: 1.6; color: #6a4a40; margin: 0; text-wrap: pretty;">A daily stack of drafts to approve, and a True Reach dashboard that shows what your voice is actually doing.</p>
+        <h2 style="font-size: clamp(32px,4.4vw,50px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.08; margin: 0 0 18px; color: #46110b; text-wrap: balance;">It drafts in your voice. You decide what ships.</h2>
+        <p style="font-size: clamp(17px,1.9vw,20px); line-height: 1.6; color: #6a4a40; margin: 0; text-wrap: pretty;">A daily brief of posts, written from what you are actually building, each one waiting on your approval.</p>
       </div>
       <div style="border-radius: 22px; overflow: hidden; background: linear-gradient(155deg, rgba(255,255,255,0.93), rgba(252,248,244,0.72) 55%, rgba(255,250,244,0.88)); border: 1px solid rgba(255,255,255,0.94); box-shadow: inset 0 1px 1px rgba(255,255,255,0.97), 0 0 0 1px rgba(70,17,11,0.05), 0 18px 40px rgba(70,17,11,0.09), 0 40px 80px rgba(70,17,11,0.07);">
         <div style="display: flex; align-items: center; gap: 14px; padding: 14px 20px; background: rgba(245,236,231,0.45); border-bottom: 1px solid rgba(255,255,255,0.5);">
@@ -195,44 +161,52 @@
         <div style="padding: clamp(18px,2.4vw,26px); background: #faf9f7; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;">
           <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0;">
             <div style="display: flex; align-items: center; gap: 11px;">
-              <span style="width: 40px; height: 40px; border-radius: 11px; background: #46110b; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="assets/emblem-cream.png" alt="" style="width: 26px; height: 26px; object-fit: contain;"></span>
+              <span style="width: 40px; height: 40px; border-radius: 11px; background: #f5ece7; border: 1px solid #efe0d4; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="assets/emblem.svg" alt="" style="width: 28px; height: 28px; object-fit: contain;"></span>
               <div style="min-width: 0;">
                 <div style="font-size: 15px; font-weight: 600; color: #46110b; line-height: 1.2;">Drafting agent</div>
-                <div style="font-size: 13px; color: #8a7268; display: flex; align-items: center; gap: 6px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #0c3c06; display: inline-block; animation: km-pulse 1.8s ease-in-out infinite;"></span>Working in your voice</div>
+                <div style="font-size: 13px; color: #8a7268; display: flex; align-items: center; gap: 6px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #0c3c06; display: inline-block; animation: km-pulse 1.8s ease-in-out infinite;"></span>Writing from your work this week</div>
               </div>
               <span style="margin-left: auto; font-size: 12px; font-weight: 600; color: #c67e1d; background: #fbf1e2; border: 1px solid #f0dcbe; padding: 5px 11px; border-radius: 999px; white-space: nowrap;">2 ready</span>
             </div>
-            <div style="background: #ffffff; border: 1px solid #efe7df; border-radius: 14px; box-shadow: 0 4px 14px rgba(70,17,11,0.05); padding: 16px 18px; display: flex; flex-direction: column; gap: 10px;">
-              <div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: #46110b;">LinkedIn</span><span style="font-size: 12px; color: #a9998f;">· 9:00 AM</span><span style="margin-left: auto; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #c67e1d;">Draft</span></div>
-              <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #3a2a24;">We just crossed 100 customer integrations. No launch video, just a team that keeps showing up. If you have been on the fence, this is your sign.</p>
-              <div style="display: flex; gap: 8px; align-items: center;"><span style="font-size: 12px; font-weight: 600; color: #ffffff; background: #000000; padding: 6px 14px; border-radius: 999px;">Approve</span><span style="font-size: 12px; font-weight: 600; color: #46110b; background: #ffffff; border: 1px solid #e7ddd4; padding: 6px 12px; border-radius: 999px;">Edit</span><span style="font-size: 12px; font-weight: 500; color: #8a7268; padding: 6px 8px;">Skip</span></div>
+            <div style="background: #ffffff; border: 1px solid #efe7df; border-radius: 14px; box-shadow: 0 4px 14px rgba(70,17,11,0.05); padding: 16px 18px; display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: #46110b;">LinkedIn</span><span style="font-size: 12px; color: #a9998f;">· considered</span><span style="margin-left: auto; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #c67e1d;">Draft</span></div>
+              <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #3a2a24;">Spent the week ripping out our onboarding and rebuilding it around the one question users kept asking. Here is what changed, and why it took three tries to get right.</p>
+              <div id="km-draft-pending" style="display: flex; gap: 8px; align-items: center;">
+                <button onclick="kmApprove()" class="km-approve" style="font-size: 12px; font-weight: 600; font-family: inherit; color: #ffffff; background: #000000; border: none; padding: 7px 16px; border-radius: 999px; cursor: pointer; transition: background .18s ease;">Approve</button>
+                <button style="font-size: 12px; font-weight: 600; font-family: inherit; color: #46110b; background: #ffffff; border: 1px solid #e7ddd4; padding: 7px 14px; border-radius: 999px; cursor: pointer;">Edit</button>
+                <button style="font-size: 12px; font-weight: 500; font-family: inherit; color: #8a7268; background: transparent; border: none; padding: 7px 8px; cursor: pointer;">Skip</button>
+              </div>
+              <div id="km-draft-approved" style="display: none; align-items: center; gap: 9px; font-size: 13px; color: #2f4a29; background: #f2f7ef; border: 1px solid #d6e6cf; border-radius: 10px; padding: 9px 12px; animation: km-fade .3s ease both;">
+                <span style="width: 20px; height: 20px; border-radius: 50%; background: #0c3c06; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span><strong style="color: #0c3c06;">Approved by you.</strong> Scheduled for 9:00 AM.</span>
+              </div>
             </div>
-            <div style="background: #ffffff; border: 1px solid #efe7df; border-radius: 14px; box-shadow: 0 4px 14px rgba(70,17,11,0.05); padding: 16px 18px; display: flex; flex-direction: column; gap: 10px;">
-              <div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: #46110b;">X</span><span style="font-size: 12px; color: #a9998f;">· 1:30 PM</span><span style="margin-left: auto; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #c67e1d;">Draft</span></div>
-              <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #3a2a24;">Shipping quietly is underrated. Ten small releases this month, each one because a customer asked. What should we build next?</p>
-              <div style="display: flex; gap: 8px; align-items: center;"><span style="font-size: 12px; font-weight: 600; color: #ffffff; background: #000000; padding: 6px 14px; border-radius: 999px;">Approve</span><span style="font-size: 12px; font-weight: 600; color: #46110b; background: #ffffff; border: 1px solid #e7ddd4; padding: 6px 12px; border-radius: 999px;">Edit</span><span style="font-size: 12px; font-weight: 500; color: #8a7268; padding: 6px 8px;">Skip</span></div>
+            <div style="background: #ffffff; border: 1px solid #efe7df; border-radius: 14px; box-shadow: 0 4px 14px rgba(70,17,11,0.05); padding: 16px 18px; display: flex; flex-direction: column; gap: 12px;">
+              <div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.04em; color: #46110b;">X</span><span style="font-size: 12px; color: #a9998f;">· incisive</span><span style="margin-left: auto; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #c67e1d;">Draft</span></div>
+              <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #3a2a24;">Nobody wants another dashboard. They want the one number that tells them if the work is working. So we built that.</p>
+              <div style="display: flex; gap: 8px; align-items: center;"><span style="font-size: 12px; font-weight: 600; color: #ffffff; background: #000000; padding: 7px 16px; border-radius: 999px;">Approve</span><span style="font-size: 12px; font-weight: 600; color: #46110b; background: #ffffff; border: 1px solid #e7ddd4; padding: 7px 14px; border-radius: 999px;">Edit</span><span style="font-size: 12px; font-weight: 500; color: #8a7268; padding: 7px 8px;">Skip</span></div>
             </div>
           </div>
           <div style="display: flex; flex-direction: column; gap: 14px; min-width: 0;">
-            <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a9998f;">This month</div>
+            <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a9998f;">Relationship net worth</div>
             <div style="background: #ffffff; border: 1px solid #efe7df; border-radius: 14px; box-shadow: 0 4px 14px rgba(70,17,11,0.05); padding: 18px;">
               <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #c67e1d; margin-bottom: 6px;">True Reach</div>
-              <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-size: 34px; font-weight: 700; letter-spacing: -0.03em; color: #46110b; font-variant-numeric: tabular-nums;">12,480</span><span style="font-size: 13px; font-weight: 600; color: #0c3c06;">+18%</span></div>
+              <div style="display: flex; align-items: baseline; gap: 8px;"><span style="font-size: 34px; font-weight: 700; letter-spacing: -0.03em; color: #46110b; font-variant-numeric: tabular-nums;">8,240</span><span style="font-size: 13px; font-weight: 600; color: #0c3c06;">+22%</span></div>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-              <div style="background: #ffffff; border: 1px solid #efe7df; border-radius: 14px; box-shadow: 0 4px 14px rgba(70,17,11,0.05); padding: 16px;"><div style="font-size: 24px; font-weight: 700; color: #46110b; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">34</div><div style="font-size: 12px; color: #8a7268; margin-top: 2px;">Approved</div></div>
-              <div style="background: #ffffff; border: 1px solid #efe7df; border-radius: 14px; box-shadow: 0 4px 14px rgba(70,17,11,0.05); padding: 16px;"><div style="font-size: 24px; font-weight: 700; color: #46110b; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">1,180</div><div style="font-size: 12px; color: #8a7268; margin-top: 2px;">Replies</div></div>
+              <div style="background: #ffffff; border: 1px solid #efe7df; border-radius: 14px; box-shadow: 0 4px 14px rgba(70,17,11,0.05); padding: 16px;"><div style="font-size: 24px; font-weight: 700; color: #46110b; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">41</div><div style="font-size: 12px; color: #8a7268; margin-top: 2px;">Approved by you</div></div>
+              <div style="background: #ffffff; border: 1px solid #efe7df; border-radius: 14px; box-shadow: 0 4px 14px rgba(70,17,11,0.05); padding: 16px;"><div style="font-size: 24px; font-weight: 700; color: #46110b; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">210</div><div style="font-size: 12px; color: #8a7268; margin-top: 2px;">Warm replies</div></div>
             </div>
             <div style="background: #ffffff; border: 1px solid #efe7df; border-radius: 14px; box-shadow: 0 4px 14px rgba(70,17,11,0.05); padding: 16px 18px;">
-              <div style="font-size: 12px; color: #8a7268; margin-bottom: 12px;">Reach, last 8 weeks</div>
+              <div style="font-size: 12px; color: #8a7268; margin-bottom: 12px;">Net worth, last 8 weeks</div>
               <div style="display: flex; align-items: flex-end; gap: 7px; height: 56px;">
-                <div style="flex: 1; height: 38%; background: #f0dcbe; border-radius: 4px 4px 0 0;"></div>
-                <div style="flex: 1; height: 46%; background: #f0dcbe; border-radius: 4px 4px 0 0;"></div>
-                <div style="flex: 1; height: 42%; background: #f0dcbe; border-radius: 4px 4px 0 0;"></div>
-                <div style="flex: 1; height: 58%; background: #eab866; border-radius: 4px 4px 0 0;"></div>
-                <div style="flex: 1; height: 64%; background: #eab866; border-radius: 4px 4px 0 0;"></div>
-                <div style="flex: 1; height: 72%; background: #e0952b; border-radius: 4px 4px 0 0;"></div>
-                <div style="flex: 1; height: 84%; background: #e0952b; border-radius: 4px 4px 0 0;"></div>
+                <div style="flex: 1; height: 34%; background: #f0dcbe; border-radius: 4px 4px 0 0;"></div>
+                <div style="flex: 1; height: 44%; background: #f0dcbe; border-radius: 4px 4px 0 0;"></div>
+                <div style="flex: 1; height: 40%; background: #f0dcbe; border-radius: 4px 4px 0 0;"></div>
+                <div style="flex: 1; height: 56%; background: #eab866; border-radius: 4px 4px 0 0;"></div>
+                <div style="flex: 1; height: 62%; background: #eab866; border-radius: 4px 4px 0 0;"></div>
+                <div style="flex: 1; height: 74%; background: #e0952b; border-radius: 4px 4px 0 0;"></div>
+                <div style="flex: 1; height: 86%; background: #e0952b; border-radius: 4px 4px 0 0;"></div>
                 <div style="flex: 1; height: 100%; background: #c67e1d; border-radius: 4px 4px 0 0;"></div>
               </div>
             </div>
@@ -242,97 +216,81 @@
     </div>
   </section>
 
-  <!-- 6. SAMPLE DRAFT -->
-  <section data-reveal style="position: relative; z-index: 1; padding: clamp(64px,8vw,104px) 24px;">
-    <div style="max-width: 720px; margin: 0 auto;">
-      <div style="text-align: center; margin: 0 0 clamp(32px,4vw,44px);">
-        <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #c67e1d; margin: 0 0 16px;">A draft, this morning</p>
-        <h2 style="font-size: clamp(30px,4.4vw,46px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.1; margin: 0 auto 16px; color: #46110b; text-wrap: balance; max-width: 560px;">This is what lands in your feed.</h2>
-        <p style="font-size: clamp(16px,1.8vw,19px); line-height: 1.6; color: #6a4a40; margin: 0 auto; max-width: 500px; text-wrap: pretty;">Written in your voice, ready to go. Approve it, tweak it, or skip it. It only publishes when you do.</p>
+  <!-- 6. TRUE REACH -->
+  <section data-reveal style="position: relative; z-index: 1; padding: clamp(60px,8vw,100px) 24px;">
+    <div style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(32px,5vw,64px); align-items: center;">
+      <div>
+        <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #c67e1d; margin: 0 0 16px;">Relationship net worth</p>
+        <h2 style="font-size: clamp(32px,4.4vw,48px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.08; margin: 0 0 20px; color: #46110b; text-wrap: balance;">Your distribution, with a number on it.</h2>
+        <p style="font-size: clamp(16px,1.9vw,19px); line-height: 1.62; color: #6a4a40; margin: 0 0 24px; text-wrap: pretty;">True Reach is the headline number: the people you can reach without a platform's permission who are also in a genuine two-way exchange with you. Your distribution is an asset. Watching it grow is the habit. Not wanting to lose it is why you stay.</p>
+        <p style="font-size: clamp(18px,2vw,22px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.3; margin: 0; color: #46110b;">Your distribution is your net worth.</p>
       </div>
-
-      <div style="background: linear-gradient(155deg, rgba(255,255,255,0.93), rgba(252,248,244,0.72) 55%, rgba(255,250,244,0.88)); border: 1px solid rgba(255,255,255,0.94); box-shadow: inset 0 1px 1px rgba(255,255,255,0.97), 0 0 0 1px rgba(70,17,11,0.05), 0 18px 40px rgba(70,17,11,0.09), 0 40px 80px rgba(70,17,11,0.07); border-radius: 22px; overflow: hidden;">
-        <div style="display: flex; align-items: center; gap: 12px; padding: 20px 24px; border-bottom: 1px solid #f1ede8;">
-          <div style="width: 44px; height: 44px; border-radius: 12px; background: #46110b; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-            <img src="assets/emblem-brown.png" alt="" style="width: 30px; height: 30px; object-fit: contain;">
-          </div>
-          <div style="flex: 1; min-width: 0;">
-            <div style="font-size: 16px; font-weight: 600; color: #46110b;">You</div>
-            <div style="font-size: 13px; color: #8a7268;">Draft for LinkedIn and X · 9:00 AM</div>
-          </div>
-          <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #c67e1d; background: #fbf1e2; border: 1px solid #f0dcbe; padding: 6px 12px; border-radius: 999px; white-space: nowrap;">Your voice</span>
+      <div style="position: relative; width: 100%; min-height: 460px; border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.9); box-shadow: 0 0 0 1px rgba(70,17,11,0.05), 0 30px 74px rgba(70,17,11,0.16);">
+        <div style="position: absolute; inset: 0; background: linear-gradient(160deg, #fff4e6 0%, #fdeadb 44%, #f7f2ee 100%);"></div>
+        <svg viewBox="0 0 400 300" preserveAspectRatio="none" style="position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 74%;">
+          <defs><linearGradient id="kmTr2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0952b" stop-opacity="0.55"/><stop offset="1" stop-color="#e0952b" stop-opacity="0"/></linearGradient></defs>
+          <path d="M0,236 C50,222 84,190 132,178 C182,166 206,128 256,108 C312,86 350,58 400,40 L400,300 L0,300 Z" fill="url(#kmTr2)"/>
+          <path d="M0,236 C50,222 84,190 132,178 C182,166 206,128 256,108 C312,86 350,58 400,40" fill="none" stroke="#c67e1d" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <div style="position: absolute; top: 22px; left: 22px; right: 22px; background: rgba(255,255,255,0.42); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); border: 1px solid rgba(255,255,255,0.75); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 10px 30px rgba(70,17,11,0.10); border-radius: 18px; padding: 20px 22px;">
+          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c67e1d; margin-bottom: 8px;">True Reach, this quarter</div>
+          <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;"><span style="font-size: clamp(40px,7vw,56px); font-weight: 700; letter-spacing: -0.04em; color: #46110b; line-height: 1; font-variant-numeric: tabular-nums;">8,240</span><span style="font-size: 15px; font-weight: 700; color: #0c3c06;">+22%</span><span style="font-size: 13px; color: #6a4a40; margin-left: auto;">reachable without permission</span></div>
         </div>
-
-        <div style="padding: 24px;">
-          <textarea id="km-draft-textarea" style="display: none; width: 100%; min-height: 148px; box-sizing: border-box; padding: 16px 18px; font-size: 17px; line-height: 1.6; color: #46110b; border: 1px solid #e0952b; border-radius: 14px; background: #fffdf9; outline: none; resize: vertical; box-shadow: 0 0 0 4px rgba(224,149,43,0.16);"></textarea>
-          <p id="km-draft-text" style="font-size: 17px; line-height: 1.62; color: #3a2a24; margin: 0; white-space: pre-wrap;">Quiet milestone worth saying out loud: we shipped our 100th customer integration this week. No launch video, no countdown, just a small team that keeps showing up.
-
-If you have been on the fence, consider this your sign. What should we build next?</p>
-        </div>
-
-        <div style="padding: 0 24px 22px;">
-          <div id="km-draft-pending" style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-            <button type="button" class="km-approve" onclick="kmDraftApprove()" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-size: 15px; font-weight: 600; font-family: inherit; background: #000000; color: #ffffff; border: none; border-radius: 999px; cursor: pointer; transition: background .18s ease, transform .18s ease;">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Approve
-            </button>
-            <button type="button" class="km-edit-btn" onclick="kmDraftEdit()" style="padding: 12px 22px; font-size: 15px; font-weight: 600; font-family: inherit; background: #ffffff; color: #46110b; border: 1px solid #e7ddd4; border-radius: 999px; cursor: pointer; transition: border-color .18s ease, color .18s ease;">Edit</button>
-            <button type="button" class="km-skip" onclick="kmDraftSkip()" style="padding: 12px 18px; font-size: 15px; font-weight: 500; font-family: inherit; background: transparent; color: #8a7268; border: none; border-radius: 999px; cursor: pointer; margin-left: auto; transition: color .18s ease;">Skip</button>
+        <div style="position: absolute; bottom: 22px; left: 22px; right: 22px; background: rgba(255,255,255,0.42); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); border: 1px solid rgba(255,255,255,0.75); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 10px 30px rgba(70,17,11,0.10); border-radius: 18px; padding: 20px 22px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8a7268;">What the number is made of</div>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 13px; color: #6a4a40;">In a two-way exchange with you</span><span style="font-size: 14px; font-weight: 700; color: #46110b; font-variant-numeric: tabular-nums;">3,120</span></div>
+            <div style="height: 7px; border-radius: 999px; background: rgba(70,17,11,0.07); overflow: hidden;"><div style="height: 100%; width: 82%; border-radius: 999px; background: #c67e1d; transform-origin: left; animation: km-bar .9s cubic-bezier(.2,.8,.2,1) both;"></div></div>
           </div>
-          <div id="km-draft-editing" style="display: none; align-items: center; gap: 10px; flex-wrap: wrap;">
-            <button type="button" class="km-save" onclick="kmDraftSave()" style="padding: 12px 24px; font-size: 15px; font-weight: 600; font-family: inherit; background: #000000; color: #ffffff; border: none; border-radius: 999px; cursor: pointer; transition: background .18s ease;">Save draft</button>
-            <button type="button" class="km-cancel" onclick="kmDraftCancel()" style="padding: 12px 18px; font-size: 15px; font-weight: 500; font-family: inherit; background: transparent; color: #8a7268; border: none; border-radius: 999px; cursor: pointer; transition: color .18s ease;">Cancel</button>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 13px; color: #6a4a40;">Warm conversations this quarter</span><span style="font-size: 14px; font-weight: 700; color: #46110b; font-variant-numeric: tabular-nums;">640</span></div>
+            <div style="height: 7px; border-radius: 999px; background: rgba(70,17,11,0.07); overflow: hidden;"><div style="height: 100%; width: 48%; border-radius: 999px; background: #e0952b; transform-origin: left; animation: km-bar .9s cubic-bezier(.2,.8,.2,1) both;"></div></div>
           </div>
-          <div id="km-draft-approved" style="display: none; align-items: center; gap: 12px; padding: 14px 18px; background: #f2f7ef; border: 1px solid #d6e6cf; border-radius: 14px; animation: km-fade .35s ease both;">
-            <span style="width: 30px; height: 30px; border-radius: 50%; background: #0c3c06; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <div style="flex: 1; min-width: 0; font-size: 15px; color: #2f4a29;"><strong style="color: #0c3c06;">Approved.</strong> Scheduled for 9:00 AM to LinkedIn and X.</div>
-            <button type="button" class="km-undo" onclick="kmDraftUndo()" style="font-size: 14px; font-weight: 600; font-family: inherit; background: transparent; border: none; color: #6a4a40; cursor: pointer; white-space: nowrap; transition: color .18s ease;">Undo</button>
-          </div>
-          <div id="km-draft-skipped" style="display: none; align-items: center; gap: 12px; padding: 14px 18px; background: #faf9f7; border: 1px solid #e7ddd4; border-radius: 14px; animation: km-fade .35s ease both;">
-            <div style="flex: 1; min-width: 0; font-size: 15px; color: #6a4a40;"><strong style="color: #46110b;">Skipped.</strong> Karamel will draft a fresh one tomorrow.</div>
-            <button type="button" class="km-undo" onclick="kmDraftUndo()" style="font-size: 14px; font-weight: 600; font-family: inherit; background: transparent; border: none; color: #6a4a40; cursor: pointer; white-space: nowrap; transition: color .18s ease;">Undo</button>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 13px; color: #6a4a40;">Audience you own outright</span><span style="font-size: 14px; font-weight: 700; color: #46110b; font-variant-numeric: tabular-nums;">12,800</span></div>
+            <div style="height: 7px; border-radius: 999px; background: rgba(70,17,11,0.07); overflow: hidden;"><div style="height: 100%; width: 66%; border-radius: 999px; background: #e0952b; transform-origin: left; animation: km-bar .9s cubic-bezier(.2,.8,.2,1) both;"></div></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 7. TRUE REACH -->
-  <section data-reveal style="position: relative; z-index: 1; padding: clamp(64px,8vw,104px) 24px;">
-    <div style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(32px,5vw,64px); align-items: center;">
-      <div>
-        <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #c67e1d; margin: 0 0 16px;">True Reach</p>
-        <h2 style="font-size: clamp(32px,4.4vw,48px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.08; margin: 0 0 20px; color: #46110b; text-wrap: balance;">The only number that means anything.</h2>
-        <p style="font-size: clamp(16px,1.9vw,19px); line-height: 1.62; color: #6a4a40; margin: 0 0 28px; text-wrap: pretty;">True Reach counts the people who actually saw your work and did something with it, weighted by how much they matter to you. Not impressions. Not follower counts. People.</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-          <div style="background: linear-gradient(155deg, rgba(255,255,255,0.9), rgba(252,248,244,0.66) 55%, rgba(255,250,244,0.82)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(70,17,11,0.05), 0 10px 24px rgba(70,17,11,0.06), 0 26px 52px rgba(70,17,11,0.05); border-radius: 16px; padding: 20px;">
-            <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #a9998f; margin-bottom: 10px;">Vanity metrics</div>
-            <div style="font-size: 15px; line-height: 1.5; color: #8a7268;">Impressions, follower counts, and likes from people who will never buy.</div>
-          </div>
-          <div style="background: linear-gradient(155deg, rgba(252,240,223,0.92), rgba(246,223,192,0.64) 55%, rgba(250,232,206,0.85)); border: 1px solid rgba(255,248,238,0.92); box-shadow: inset 0 1px 1px rgba(255,255,255,0.9), 0 0 0 1px rgba(224,149,43,0.18), 0 12px 30px rgba(176,110,30,0.10), 0 30px 60px rgba(176,110,30,0.06); border-radius: 16px; padding: 20px;">
-            <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c67e1d; margin-bottom: 10px;">True Reach</div>
-            <div style="font-size: 15px; line-height: 1.5; color: #6a4a40;">Decision-makers reached, replies that start conversations, reach that turns into pipeline.</div>
-          </div>
-        </div>
+  <!-- 7. WHAT KARAMEL IS NOT -->
+  <section data-reveal style="position: relative; z-index: 1; padding: clamp(60px,8vw,100px) 24px;">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div style="text-align: center; max-width: 640px; margin: 0 auto clamp(32px,4vw,44px);">
+        <p style="font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #c67e1d; margin: 0 0 16px;">What Karamel is not</p>
+        <h2 style="font-size: clamp(30px,4.4vw,48px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.08; margin: 0 auto 16px; color: #46110b; text-wrap: balance;">It will never post as you.</h2>
+        <p style="font-size: clamp(16px,1.8vw,19px); line-height: 1.6; color: #6a4a40; margin: 0 auto; max-width: 540px; text-wrap: pretty;">Automation is how you become the slop, and how you get your account banned. Karamel points. You publish.</p>
       </div>
-      <div style="position: relative; width: 100%; min-height: 460px; border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.9); box-shadow: 0 0 0 1px rgba(70,17,11,0.05), 0 30px 74px rgba(70,17,11,0.16);">
-        <div style="position: absolute; inset: 0; background: linear-gradient(160deg, #fff4e6 0%, #fdeadb 44%, #f7f2ee 100%);"></div>
-        <svg viewBox="0 0 400 300" preserveAspectRatio="none" style="position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 74%;">
-          <defs><linearGradient id="kmTr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0952b" stop-opacity="0.55"/><stop offset="1" stop-color="#e0952b" stop-opacity="0"/></linearGradient></defs>
-          <path d="M0,232 C50,214 84,176 132,166 C182,156 206,120 256,104 C312,86 350,60 400,44 L400,300 L0,300 Z" fill="url(#kmTr)"/>
-          <path d="M0,232 C50,214 84,176 132,166 C182,156 206,120 256,104 C312,86 350,60 400,44" fill="none" stroke="#c67e1d" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
-        </svg>
-        <div style="position: absolute; top: 22px; left: 22px; right: 22px; background: rgba(255,255,255,0.42); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); border: 1px solid rgba(255,255,255,0.75); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 10px 30px rgba(70,17,11,0.10); border-radius: 18px; padding: 20px 22px;">
-          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #c67e1d; margin-bottom: 8px;">True Reach, this quarter</div>
-          <div style="display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;"><span style="font-size: clamp(40px,7vw,56px); font-weight: 700; letter-spacing: -0.04em; color: #46110b; line-height: 1; font-variant-numeric: tabular-nums;">12,480</span><span style="font-size: 15px; font-weight: 700; color: #0c3c06;">+18%</span><span style="font-size: 13px; color: #6a4a40; margin-left: auto;">6.4% reply rate</span></div>
-          <div style="font-size: 13px; color: #6a4a40; margin-top: 8px;">people who saw your work and acted on it</div>
+      <div style="background: linear-gradient(155deg, rgba(255,255,255,0.93), rgba(252,248,244,0.72) 55%, rgba(255,250,244,0.88)); border: 1px solid rgba(255,255,255,0.94); box-shadow: inset 0 1px 1px rgba(255,255,255,0.97), 0 0 0 1px rgba(70,17,11,0.05), 0 18px 40px rgba(70,17,11,0.09), 0 40px 80px rgba(70,17,11,0.07); border-radius: 24px; padding: clamp(20px,3vw,34px) clamp(22px,3vw,38px); display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: flex-start; gap: 16px; padding: 22px 0; border-bottom: 1px solid #f1ede8;">
+          <span style="width: 30px; height: 30px; border-radius: 50%; background: #fbf0ef; border: 1px solid #f0d6d3; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#a4243b" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+          <div style="min-width: 0;">
+            <div style="font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: #46110b; margin-bottom: 4px;">Not an automation bot</div>
+            <div style="font-size: 15px; line-height: 1.55; color: #6a4a40;">That is how you become the slop, and how you get your account banned. Karamel never publishes on its own.</div>
+          </div>
         </div>
-        <div style="background: rgba(255,255,255,0.42); backdrop-filter: blur(18px) saturate(180%); -webkit-backdrop-filter: blur(18px) saturate(180%); border: 1px solid rgba(255,255,255,0.75); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 10px 30px rgba(70,17,11,0.10); position: absolute; bottom: 22px; left: 22px; right: 22px; border-radius: 18px; padding: 20px 22px; display: flex; flex-direction: column; gap: 14px;">
-          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #8a7268;">Who you actually reached</div>
-          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 13px; color: #6a4a40;">Decision-makers</span><span style="font-size: 14px; font-weight: 700; color: #46110b; font-variant-numeric: tabular-nums;">4,210</span></div><div style="height: 7px; border-radius: 999px; background: rgba(70,17,11,0.07); overflow: hidden;"><div style="height: 100%; width: 82%; border-radius: 999px; background: #c67e1d; transform-origin: left; animation: km-bar .9s cubic-bezier(.2,.8,.2,1) both;"></div></div></div>
-          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 13px; color: #6a4a40;">Replies that started conversations</span><span style="font-size: 14px; font-weight: 700; color: #46110b; font-variant-numeric: tabular-nums;">1,180</span></div><div style="height: 7px; border-radius: 999px; background: rgba(70,17,11,0.07); overflow: hidden;"><div style="height: 100%; width: 54%; border-radius: 999px; background: #e0952b; transform-origin: left; animation: km-bar .9s cubic-bezier(.2,.8,.2,1) both;"></div></div></div>
-          <div style="display: flex; flex-direction: column; gap: 6px;"><div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 13px; color: #6a4a40;">Pipeline touched</span><span style="font-size: 14px; font-weight: 700; color: #46110b; font-variant-numeric: tabular-nums;">$2.4M</span></div><div style="height: 7px; border-radius: 999px; background: rgba(70,17,11,0.07); overflow: hidden;"><div style="height: 100%; width: 68%; border-radius: 999px; background: #e0952b; transform-origin: left; animation: km-bar .9s cubic-bezier(.2,.8,.2,1) both;"></div></div></div>
+        <div style="display: flex; align-items: flex-start; gap: 16px; padding: 22px 0; border-bottom: 1px solid #f1ede8;">
+          <span style="width: 30px; height: 30px; border-radius: 50%; background: #fbf0ef; border: 1px solid #f0d6d3; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#a4243b" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+          <div style="min-width: 0;">
+            <div style="font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: #46110b; margin-bottom: 4px;">Not a one-shot generator</div>
+            <div style="font-size: 15px; line-height: 1.55; color: #6a4a40;">It does not forget you tomorrow. It learns the arc of what you are building and compounds it over time.</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 16px; padding: 22px 0; border-bottom: 1px solid #f1ede8;">
+          <span style="width: 30px; height: 30px; border-radius: 50%; background: #fbf0ef; border: 1px solid #f0d6d3; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="#a4243b" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+          <div style="min-width: 0;">
+            <div style="font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: #46110b; margin-bottom: 4px;">Not a sales tool</div>
+            <div style="font-size: 15px; line-height: 1.55; color: #6a4a40;">It will never send a message on your behalf. It points; you decide.</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 16px; padding: 22px 0 6px;">
+          <span style="width: 30px; height: 30px; border-radius: 50%; background: #f2f7ef; border: 1px solid #d6e6cf; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#0c3c06" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div style="min-width: 0;">
+            <div style="font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: #0c3c06; margin-bottom: 4px;">What it is</div>
+            <div style="font-size: 15px; line-height: 1.55; color: #6a4a40;">Intent signals point you to the people genuinely paying attention and the media that will reach them. You send nothing you did not write and approve.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -340,11 +298,12 @@ If you have been on the fence, consider this your sign. What should we build nex
 
   <!-- 8. CLOSING CTA -->
   <section id="waitlist" style="position: relative; z-index: 1; padding: clamp(80px,10vw,132px) 24px; overflow: hidden; text-align: center;">
-    <div style="position: relative; max-width: 720px; margin: 0 auto;">
+    <div style="position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(224,149,43,0.24), rgba(224,149,43,0) 70%); filter: blur(22px); animation: km-drift 19s ease-in-out infinite; pointer-events: none;"></div>
+    <div style="position: relative; z-index: 1; max-width: 720px; margin: 0 auto;">
       <div style="display: inline-flex; margin: 0 auto 26px;">
         <img src="assets/emblem.svg" alt="" style="height: 46px; width: auto;">
       </div>
-      <h2 style="font-size: clamp(34px,5vw,58px); font-weight: 600; letter-spacing: -0.04em; line-height: 1.04; margin: 0 auto 32px; color: #46110b; text-wrap: balance; max-width: 620px;">Your next chapter deserves an audience.</h2>
+      <h2 style="font-size: clamp(34px,5vw,58px); font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; margin: 0 auto 32px; color: #46110b; text-wrap: balance; max-width: 640px;">The builders who own their distribution will own the next decade.</h2>
       <div class="km-wl" style="width: 100%; max-width: 480px; margin: 0 auto; font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif;">
         <div class="km-wl-joined" style="display: none; align-items: center; gap: 14px; padding: 18px 22px; background: linear-gradient(155deg, rgba(252,240,223,0.95), rgba(248,228,200,0.7)); border: 1px solid rgba(255,248,238,0.95); border-radius: 18px; box-shadow: inset 0 1px 1px rgba(255,255,255,0.9), 0 0 0 1px rgba(224,149,43,0.2), 0 10px 26px rgba(176,110,30,0.10); animation: km-pop .38s cubic-bezier(.2,.8,.2,1) both;">
           <span style="width: 38px; height: 38px; border-radius: 50%; background: #e0952b; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">
@@ -373,7 +332,7 @@ If you have been on the fence, consider this your sign. What should we build nex
         <img src="assets/emblem.svg" alt="" style="height: 22px; width: auto;">
         <span style="font-size: 19px; font-weight: 500; letter-spacing: -0.04em; color: #46110b;">Karamel</span>
       </div>
-      <span style="font-size: 14px; color: #8a7268;">© 2026 Karamel. Curate, never autopilot.</span>
+      <span style="font-size: 14px; color: #8a7268;">© 2026 Karamel. Distribution you own.</span>
     </div>
   </footer>
 </div>
@@ -410,22 +369,11 @@ If you have been on the fence, consider this your sign. What should we build nex
     return false;
   }
 
-  // Sample-draft interactivity (approve / edit / skip / undo)
-  function kmDraftShow(state){
-    var text = document.getElementById('km-draft-text');
-    var ta = document.getElementById('km-draft-textarea');
-    var ids = { pending:'km-draft-pending', editing:'km-draft-editing', approved:'km-draft-approved', skipped:'km-draft-skipped' };
-    for(var k in ids){ document.getElementById(ids[k]).style.display = 'none'; }
-    document.getElementById(ids[state]).style.display = 'flex';
-    if(state === 'editing'){ ta.value = text.textContent; ta.style.display = 'block'; text.style.display = 'none'; }
-    else { ta.style.display = 'none'; text.style.display = 'block'; }
+  // Sample-draft interactivity (approve)
+  function kmApprove(){
+    document.getElementById('km-draft-pending').style.display = 'none';
+    document.getElementById('km-draft-approved').style.display = 'flex';
   }
-  function kmDraftApprove(){ kmDraftShow('approved'); }
-  function kmDraftSkip(){ kmDraftShow('skipped'); }
-  function kmDraftEdit(){ kmDraftShow('editing'); }
-  function kmDraftSave(){ document.getElementById('km-draft-text').textContent = document.getElementById('km-draft-textarea').value; kmDraftShow('pending'); }
-  function kmDraftCancel(){ kmDraftShow('pending'); }
-  function kmDraftUndo(){ kmDraftShow('pending'); }
 
   // Reveal on scroll
   (function(){
