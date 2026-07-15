@@ -6,6 +6,20 @@
 <title>Karamel, build the distribution you actually own</title>
 <meta name="description" content="Karamel is the GTM engine for lean founders and builders who sell through who they are. It turns what you are building into media in your own voice, publishes it where your audience already is, and compounds it into relationships you own.">
 <link rel="icon" href="assets/emblem.svg">
+<link rel="canonical" href="https://heykaramel.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Karamel">
+<meta property="og:url" content="https://heykaramel.com/">
+<meta property="og:title" content="Karamel, build the distribution you actually own">
+<meta property="og:description" content="The GTM engine for lean founders and builders who sell through who they are. Your work becomes media in your own voice, published where your audience already is.">
+<meta property="og:image" content="https://heykaramel.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Karamel: build the distribution you actually own.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Karamel, build the distribution you actually own">
+<meta name="twitter:description" content="The GTM engine for lean founders and builders who sell through who they are. Your work becomes media in your own voice, published where your audience already is.">
+<meta name="twitter:image" content="https://heykaramel.com/assets/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -105,7 +119,7 @@
             <div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.03em; color: #0a0a0a;">LinkedIn</span><span style="font-size: 12px; color: #a0a0a0;">· considered</span><span style="margin-left: auto; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #8a8a8a;">Draft</span></div>
             <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #333333; min-height: 63px;"><span id="kv-type"></span><span id="kv-caret" style="display: inline-block; width: 2px; height: 15px; background: #e0952b; margin-left: 1px; vertical-align: -2px; animation: kv-caret 1s step-end infinite;"></span></p>
             <div id="kv-draft-pending" style="display: flex; gap: 8px; align-items: center;">
-              <button onclick="kvApprove()" class="kv-approve" style="font-size: 12px; font-weight: 600; font-family: inherit; color: #ffffff; background: #0a0a0a; border: none; padding: 8px 17px; border-radius: 999px; cursor: pointer; transition: background .2s ease, transform .2s ease;">Approve</button>
+              <button onclick="kvApprove(this)" class="kv-approve" style="font-size: 12px; font-weight: 600; font-family: inherit; color: #ffffff; background: #0a0a0a; border: none; padding: 8px 17px; border-radius: 999px; cursor: pointer; transition: background .2s ease, transform .2s ease;">Approve</button>
               <button class="kv-edit" style="font-size: 12px; font-weight: 600; font-family: inherit; color: #0a0a0a; background: #ffffff; border: 1px solid #dcdcdc; padding: 8px 14px; border-radius: 999px; cursor: pointer; transition: border-color .2s ease;">Edit</button>
               <button class="kv-skip" style="font-size: 12px; font-weight: 500; font-family: inherit; color: #8a8a8a; background: transparent; border: none; padding: 8px; cursor: pointer; transition: color .2s ease;">Skip</button>
             </div>
@@ -123,9 +137,9 @@
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 16px; min-width: 0;">
-          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9a9a9a;">Relationship net worth</div>
+          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9a9a9a;">True Reach</div>
           <div style="background: linear-gradient(155deg, rgba(255,250,243,0.94), rgba(251,241,226,0.72)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(224,149,43,0.12), 0 10px 26px rgba(176,110,30,0.08); border-radius: 15px; padding: 20px;">
-            <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #b07b1c; margin-bottom: 8px;">True Reach</div>
+            <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #b07b1c; margin-bottom: 8px;">This quarter</div>
             <div style="display: flex; align-items: baseline; gap: 9px;"><span data-count="8240" style="font-size: 38px; font-weight: 700; letter-spacing: -0.035em; color: #e0952b; font-variant-numeric: tabular-nums; line-height: 1;">8,240</span><span style="font-size: 13px; font-weight: 600; color: #0a0a0a;">+22%</span></div>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
@@ -133,7 +147,7 @@
             <div style="background: #ffffff; border: 1px solid #ededed; border-radius: 15px; padding: 17px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);"><div style="font-size: 25px; font-weight: 700; color: #0a0a0a; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">210</div><div style="font-size: 12px; color: #8a8a8a; margin-top: 3px;">Warm replies</div></div>
           </div>
           <div style="background: #ffffff; border: 1px solid #ededed; border-radius: 15px; padding: 17px 19px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-            <div style="font-size: 12px; color: #8a8a8a; margin-bottom: 13px;">Net worth, last 8 weeks</div>
+            <div style="font-size: 12px; color: #8a8a8a; margin-bottom: 13px;">True Reach, last 8 weeks</div>
             <div style="display: flex; align-items: flex-end; gap: 7px; height: 58px;">
               <div style="flex: 1; height: 34%; background: #f0dcbe; border-radius: 4px 4px 0 0;"></div>
               <div style="flex: 1; height: 44%; background: #eecfa2; border-radius: 4px 4px 0 0;"></div>
@@ -214,7 +228,7 @@
     <div style="position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: 0 32px clamp(72px,10vw,140px);">
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(32px,5vw,72px); align-items: center;">
         <div>
-          <p data-reveal style="margin: 0 0 clamp(20px,2.5vw,30px);"><span class="kv-pill" style="display: inline-block; padding: 7px 15px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1b1a18; background: #eef773; border-radius: 999px; transition: transform .25s cubic-bezier(.34,1.56,.64,1);">Relationship net worth</span></p>
+          <p data-reveal style="margin: 0 0 clamp(20px,2.5vw,30px);"><span class="kv-pill" style="display: inline-block; padding: 7px 15px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1b1a18; background: #eef773; border-radius: 999px; transition: transform .25s cubic-bezier(.34,1.56,.64,1);">True Reach</span></p>
           <h2 data-reveal style="font-size: clamp(34px,4.6vw,60px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.02; margin: 0 0 24px; color: #0a0a0a; text-wrap: balance;">Your distribution, with a number on it.</h2>
           <p data-reveal style="font-size: clamp(17px,1.9vw,20px); line-height: 1.55; color: #6b6b6b; margin: 0; max-width: 44ch; text-wrap: pretty;">True Reach is the headline number: the people you can reach without a platform's permission who are also in a genuine two-way exchange with you. Your distribution is an asset. Watch it grow.</p>
         </div>
@@ -262,7 +276,7 @@
             <div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 12px; font-weight: 700; color: #0a0a0a;">LinkedIn</span><span style="font-size: 12px; color: #a0a0a0;">· considered</span><span style="margin-left: auto; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #8a8a8a;">In your queue</span></div>
             <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #333333;">Been heads down rebuilding onboarding around the one question users kept asking. Here is what changed, and why it took three tries.</p>
             <div id="kv-g-pending" style="display: flex; gap: 8px; align-items: center;">
-              <button onclick="kvApprove()" class="kv-approve" style="font-size: 12px; font-weight: 600; font-family: inherit; color: #ffffff; background: #0a0a0a; border: none; padding: 8px 17px; border-radius: 999px; cursor: pointer; transition: background .2s ease, transform .2s ease;">Approve</button>
+              <button onclick="kvApprove(this)" class="kv-approve" style="font-size: 12px; font-weight: 600; font-family: inherit; color: #ffffff; background: #0a0a0a; border: none; padding: 8px 17px; border-radius: 999px; cursor: pointer; transition: background .2s ease, transform .2s ease;">Approve</button>
               <button class="kv-edit" style="font-size: 12px; font-weight: 600; font-family: inherit; color: #0a0a0a; background: #ffffff; border: 1px solid #dcdcdc; padding: 8px 14px; border-radius: 999px; cursor: pointer; transition: border-color .2s ease;">Edit</button>
               <button class="kv-skip" style="font-size: 12px; font-weight: 500; font-family: inherit; color: #8a8a8a; background: transparent; border: none; padding: 8px; cursor: pointer; transition: color .2s ease;">Skip</button>
             </div>
@@ -345,17 +359,14 @@
     return false;
   }
 
-  // Sample-draft interactivity (approve). Ported from the design's state/handler.
-  // The design drives both draft cards off a single `approved` state, so one click flips both.
-  function kvApprove(){
-    ['kv-draft-pending','kv-g-pending'].forEach(function(id){
-      var el = document.getElementById(id);
-      if(el){ el.style.display = 'none'; }
-    });
-    ['kv-draft-approved','kv-g-approved'].forEach(function(id){
-      var el = document.getElementById(id);
-      if(el){ el.style.display = 'flex'; }
-    });
+  // Sample-draft interactivity (approve). Each card owns its own state: the button's parent is the
+  // pending row, and the confirmation that replaces it is that row's next sibling.
+  function kvApprove(btn){
+    var pending = btn && btn.parentElement;
+    var approved = pending && pending.nextElementSibling;
+    if(!pending || !approved){ return; }
+    pending.style.display = 'none';
+    approved.style.display = 'flex';
   }
 
   (function(){

@@ -1,36 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Karamel · Page not found</title>
-  <meta name="robots" content="noindex" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600&family=Inter:wght@400;500&family=Fira+Mono:wght@500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    .nf { min-height: 100vh; display: grid; place-items: center; text-align: center; padding: 24px; }
-    .nf__code { font-family: var(--mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-strong); }
-    .nf__title { font-family: var(--display); font-weight: 500; font-size: clamp(34px, 6vw, 56px); letter-spacing: -.02em; margin: 16px 0 12px; }
-    .nf__sub { color: var(--muted); font-size: 18px; margin-bottom: 28px; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karamel, page not found</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/emblem.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #ffffff; }
+  a { text-decoration: none; }
+  .nf {
+    min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 32px;
+    font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; color: #0a0a0a;
+    background: linear-gradient(180deg, #ffffff 0%, #faf8f5 62%, #f4ead9 100%);
+  }
+  .nf__brand { display: flex; align-items: center; gap: 9px; margin-bottom: clamp(28px,4vw,40px); }
+  .nf__brand img { height: 34px; width: auto; display: block; }
+  .nf__brand span { font-size: 24px; font-weight: 600; letter-spacing: -0.04em; color: #0a0a0a; }
+  .nf__code { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #b07b1c; }
+  .nf__title { font-size: clamp(40px,6.4vw,72px); font-weight: 700; letter-spacing: -0.05em; line-height: 0.98;
+               margin: 16px 0 14px; max-width: 14ch; text-wrap: balance; }
+  .nf__sub { font-size: clamp(17px,1.9vw,20px); line-height: 1.5; color: #6b6b6b; margin: 0 0 clamp(28px,3.5vw,38px);
+             max-width: 46ch; text-wrap: pretty; }
+  .nf__cta { display: inline-flex; align-items: center; gap: 9px; padding: 15px 26px; font-size: 16px; font-weight: 600;
+             color: #ffffff; background: #0a0a0a; border-radius: 999px;
+             transition: background .2s ease, transform .2s ease, box-shadow .2s ease; }
+  .nf__cta:hover { background: #262626; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(10,10,10,0.22); }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
 </head>
 <body>
   <main class="nf">
-    <div>
-      <a class="brand" href="/" style="justify-content:center;margin-bottom:28px;">
-        <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 28 28" width="22" height="22" fill="none"><path d="M2 14c3 0 3-8 6-8s3 16 6 16 3-12 6-12 2.5 4 6 4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-        <span class="brand__word">Karamel</span>
-      </a>
-      <p class="nf__code">404</p>
-      <h1 class="nf__title">This page went quiet.</h1>
-      <p class="nf__sub">The link you followed does not carry anywhere. Let's get you back.</p>
-      <a href="/" class="btn btn--primary">Back to home</a>
-    </div>
+    <a class="nf__brand" href="/">
+      <img src="/assets/emblem.svg" alt="">
+      <span>Karamel</span>
+    </a>
+    <p class="nf__code">404</p>
+    <h1 class="nf__title">This page went quiet.</h1>
+    <p class="nf__sub">The link you followed does not carry anywhere. Let's get you back to the work.</p>
+    <a href="/" class="nf__cta">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to home
+    </a>
   </main>
 </body>
 </html>

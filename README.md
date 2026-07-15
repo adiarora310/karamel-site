@@ -1,64 +1,42 @@
-# Karamel landing page
+# heykaramel.com
 
-Static one-page marketing site for Karamel. No build step, no framework. Just
-`index.html`, `styles.css`, `script.js`, and a few assets. Deploys anywhere that
-serves static files.
+Static marketing site. No build step, no dependencies, no framework. What is in `main` is what is live.
 
-## Files
+- **Live:** https://heykaramel.com (GitHub Pages, `adiarora310/karamel-site`, branch `main`, root path)
+- **Source of truth:** `~/Documents/Claude/karamel/web`
+- **DNS:** GoDaddy. Apex `A -> 185.199.108.153`. `www` CNAMEs to the apex. The `CNAME` file here pins the custom domain, and GitHub commits that file itself when the Pages domain is toggled, so always `git pull --rebase` before pushing after a domain change.
 
-| File | Purpose |
+## Layout
+
+| Path | What it is |
 |---|---|
-| `index.html` | The page |
-| `styles.css` | All styles, including the Modal-fidelity animation layer |
-| `script.js` | Nav state, scroll reveals, the hero typewriter, the waitlist form |
-| `favicon.svg` | Tab icon (the Karamel waveform mark) |
-| `og.svg` | Source for the social share image (see "Share image" below) |
-| `robots.txt`, `sitemap.xml` | SEO basics (point at https://heykaramel.com) |
-| `404.html` | Branded not-found page |
+| `index.html` | The live homepage. Self-contained: inline styles, inline script. |
+| `404.html` | Not-found page. Self-contained, same system as the homepage. |
+| `assets/` | `emblem.svg` is the mark in use. Also colour variants, the OG card, product crops. |
+| `v2/` – `v6/` | Frozen archives of past versions, kept for comparison and never edited. `v6` mirrors the current root. |
+| `robots.txt`, `sitemap.xml` | SEO basics, pointed at https://heykaramel.com |
 
-## Design notes
+## Design system as built
 
-Visual system is modeled on modal.com, flipped to a white background.
-- Accent green is Modal's exact `#7FEE64`.
-- Body font **Inter**, mono **Fira Mono** (both match Modal). Headlines use
-  **Schibsted Grotesk**, the closest free, commercially-licensed stand-in for
-  Modal's proprietary "Goga". To use a different display font, change `--display`
-  in `styles.css`.
-- Recreated effects: 80s infinite two-direction marquee, CTA shimmer, staggered
-  reveals, the hero draft typewriter, growing metric bars. All respect
-  `prefers-reduced-motion`.
+White page, near-black `#0a0a0a` type, caramel `#e0952b` primary, cream `#f4ead9` footer. Hanken Grotesk throughout.
+Four pastel pills carry the section accents, used as accents only and never as background fills: peach `#fcc9ab`, sky `#bedffe`, lime `#eef773`, pink `#f8b9e4`.
+Brown is retired as a UI and type colour. It survives only inside illustration artwork.
+All motion respects `prefers-reduced-motion`.
 
-## Preview locally
+## Local preview
 
 ```
-python3 -m http.server 4321 --directory .
-# open http://localhost:4321
+cd web && python3 -m http.server 4399
+# open http://localhost:4399
 ```
 
-## Two steps before launch
+The harness `preview_start` wrapper drops `--directory` and will 404 everything, so run the server directly.
 
-1. **Wire the waitlist.** Create a free form at https://formspree.io and replace
-   `FORM_ENDPOINT` in `script.js` with `https://formspree.io/f/XXXXXXXX`. Until
-   then the form confirms locally but stores nothing. (Buttondown or a Supabase
-   table work too; swap the fetch.)
-2. **Generate the share image.** Convert `og.svg` to a 1200x630 `og.png` (open
-   `og.svg` in a browser at that size and export, or use any SVG-to-PNG tool).
-   The meta tags already point at `/og.png`.
+## The design loop
 
-## Deploy (all free)
+Design authority lives in the Claude Design project, not in this repo. Claude Design authors the look; this repo carries the converted result. Conversion is faithful: no substituting assets or "fixing" things in transit. See `../DEV_LOOP.md` and `../HANDOFF.md`.
 
-Pick one. The site is plain static files, so any of these work in minutes:
-- **Cloudflare Pages / Netlify:** drag this folder into the dashboard, or connect
-  the repo. Set no build command, publish directory = this folder.
-- **GitHub Pages:** push this folder to a repo, enable Pages on the branch.
-- **Vercel:** `vercel` in this folder, accept the static defaults.
+## Known gaps
 
-Then point `heykaramel.com` at the host and update the absolute URLs in
-the `<head>` Open Graph tags, `robots.txt`, and `sitemap.xml` if the domain
-differs.
-
-## Canonical location
-
-Source of truth lives in `~/Documents/Claude/karamel/web`. (During local preview
-in this environment the files are mirrored to `/tmp/karamel-web` because the
-preview sandbox only reads its declared working directories.)
+- **The waitlist stores nothing.** `FORM_ACTION` and `EMAIL_FIELD` in `index.html` are still empty, so every submitted email is dropped while the visitor is shown a success state. Blocked on creating the Google Form.
+- `assets/og.png` is functional bones, not a designed card. It is due a Claude Design pass.
