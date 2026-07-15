@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karamel, build the distribution you actually own</title>
+<meta name="description" content="Karamel is the GTM engine for lean founders and builders who sell through who they are. It turns what you are building into media in your own voice, publishes it where your audience already is, and compounds it into relationships you own.">
+<link rel="icon" href="../assets/emblem.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #ffffff; }
+  html { scroll-behavior: smooth; }
+  a { color: #0a0a0a; text-decoration: none; }
+  a:hover { color: #000000; }
+  input.kv-field { font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; }
+  input.kv-field::placeholder { color: #9a9a9a; }
+  @keyframes kv-pulse { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: .35; } }
+  @keyframes kv-pop { 0% { opacity: 0; transform: translateY(6px); } 100% { opacity: 1; transform: none; } }
+  @keyframes kv-caret { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+  @keyframes kv-drift { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(3%,-4%,0) scale(1.08); } }
+  @keyframes kv-drift2 { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(-3%,4%,0) scale(1.1); } }
+  @keyframes kv-glow { 0%,100% { opacity: .68; transform: translateX(-50%) scale(1); } 50% { opacity: 1; transform: translateX(-50%) scale(1.1); } }
+  /* hover and focus states (converted from the design's inline hover/focus attributes) */
+  .kv-nav-cta:hover { background: #262626; transform: translateY(-1px); }
+  .kv-hero-primary:hover { background: #262626; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(10,10,10,0.22); }
+  .kv-hero-ghost:hover { border-color: #0a0a0a; transform: translateY(-2px); background: #ffffff; }
+  .kv-approve:hover { background: #262626; transform: translateY(-1px); }
+  .kv-edit:hover { border-color: #0a0a0a; }
+  .kv-skip:hover { color: #0a0a0a; }
+  .kv-case:hover { transform: translateY(-6px); box-shadow: inset 0 1px 1px rgba(255,255,255,0.97), 0 0 0 1px rgba(224,149,43,0.16), 0 22px 48px rgba(0,0,0,0.1); }
+  .kv-step:hover { transform: translateY(-4px); border-color: #e0952b; }
+  .kv-field:focus { border-color: #e0952b; box-shadow: 0 0 0 4px rgba(224,149,43,0.18); }
+  .kv-wl-submit:hover { background: #262626; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(10,10,10,0.22); }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+<div style="font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; color: #0a0a0a; background: #ffffff; overflow-x: hidden;">
+
+  <!-- NAV -->
+  <nav style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.82); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); border-bottom: 1px solid #eeeeee;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+      <a href="#top" style="display: flex; align-items: center; gap: 9px; flex-shrink: 0;">
+        <img src="../assets/emblem.svg" alt="Karamel" style="height: 27px; width: auto; display: block;">
+        <span style="font-size: 22px; font-weight: 600; letter-spacing: -0.04em; color: #0a0a0a;">Karamel</span>
+      </a>
+      <div style="display: flex; align-items: center; gap: clamp(10px,2vw,22px);">
+        <a href="#waitlist" style="font-size: 15px; font-weight: 500; color: #0a0a0a;">Sign in</a>
+        <a href="#waitlist" class="kv-nav-cta" style="display: inline-flex; align-items: center; padding: 11px 22px; font-size: 15px; font-weight: 600; color: #ffffff; background: #0a0a0a; border-radius: 999px; white-space: nowrap; transition: background .2s ease, transform .2s ease;">Join waitlist</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" style="position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: -12% -8% auto -8%; height: 120%; z-index: 0; pointer-events: none; background: radial-gradient(46% 42% at 82% 30%, rgba(224,149,43,0.12), transparent 70%), radial-gradient(50% 46% at 12% 78%, rgba(107,24,111,0.06), transparent 72%), radial-gradient(44% 40% at 60% 92%, rgba(12,60,6,0.05), transparent 72%); filter: blur(26px); animation: kv-drift 30s ease-in-out infinite;"></div>
+    <div style="position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: clamp(64px,10vw,132px) 32px clamp(40px,5vw,64px);">
+      <h1 data-reveal style="font-size: clamp(52px,9vw,108px); font-weight: 700; letter-spacing: -0.05em; line-height: 0.97; margin: 0 0 clamp(24px,3vw,34px); max-width: 15ch; text-wrap: balance; color: #0a0a0a;">Build the distribution you actually own.</h1>
+      <p data-reveal style="font-size: clamp(18px,1.9vw,22px); line-height: 1.45; color: #6b6b6b; max-width: 620px; margin: 0 0 clamp(30px,4vw,42px); text-wrap: pretty;">Karamel is the GTM engine for lean founders and builders who sell through who they are. It turns what you are building into media in your own voice, publishes it where your audience already is, and compounds it into relationships you own.</p>
+      <div data-reveal style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+        <a href="#waitlist" class="kv-hero-primary" style="display: inline-flex; align-items: center; gap: 9px; padding: 15px 26px; font-size: 16px; font-weight: 600; color: #ffffff; background: #0a0a0a; border-radius: 999px; transition: background .2s ease, transform .2s ease, box-shadow .2s ease;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Join waitlist
+        </a>
+        <a href="#how" class="kv-hero-ghost" style="display: inline-flex; align-items: center; gap: 9px; padding: 15px 26px; font-size: 16px; font-weight: 600; color: #0a0a0a; background: rgba(255,255,255,0.6); border: 1px solid #dcdcdc; border-radius: 999px; transition: border-color .2s ease, transform .2s ease, background .2s ease;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M7 5l12 7-12 7V5z" fill="#0a0a0a"/></svg>See how it works
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PRODUCT SHOT -->
+  <section id="kv-product" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 0 32px clamp(72px,9vw,128px);">
+    <div style="position: absolute; inset: -6% 0 8% 0; z-index: 0; pointer-events: none; background: radial-gradient(40% 38% at 20% 30%, rgba(224,149,43,0.1), transparent 70%), radial-gradient(42% 40% at 84% 62%, rgba(107,24,111,0.05), transparent 72%); filter: blur(30px); animation: kv-drift2 34s ease-in-out infinite;"></div>
+    <div data-reveal style="position: relative; z-index: 1; border-radius: 22px; overflow: hidden; background: #fafafa; border: 1px solid #ededed; box-shadow: 0 2px 4px rgba(0,0,0,0.04), 0 44px 100px rgba(0,0,0,0.14);">
+      <div style="display: flex; align-items: center; gap: 14px; padding: 15px 22px; background: #f2f2f2; border-bottom: 1px solid #e6e6e6;">
+        <div style="display: flex; gap: 7px;">
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #d2d2d2;"></span>
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #d2d2d2;"></span>
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #d2d2d2;"></span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; margin: 0 auto; padding: 6px 18px; background: #ffffff; border: 1px solid #e6e6e6; border-radius: 999px; font-size: 13px; color: #8a8a8a;">
+          <img src="../assets/emblem.svg" alt="" style="height: 15px; width: auto;">app.heykaramel.com
+        </div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div style="padding: clamp(20px,2.6vw,30px); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+
+        <div style="display: flex; flex-direction: column; gap: 16px; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="width: 42px; height: 42px; border-radius: 12px; background: #ffffff; border: 1px solid #e6e6e6; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(0,0,0,0.05);"><img src="../assets/emblem.svg" alt="" style="width: 28px; height: 28px; object-fit: contain;"></span>
+            <div style="min-width: 0;">
+              <div style="font-size: 15px; font-weight: 600; color: #0a0a0a; line-height: 1.2;">Drafting agent</div>
+              <div style="font-size: 13px; color: #8a8a8a; display: flex; align-items: center; gap: 6px;"><span style="width: 7px; height: 7px; border-radius: 50%; background: #e0952b; display: inline-block; animation: kv-pulse 1.8s ease-in-out infinite;"></span>Writing from your work this week</div>
+            </div>
+            <span style="margin-left: auto; font-size: 12px; font-weight: 600; color: #0a0a0a; background: #f0f0f0; border: 1px solid #e2e2e2; padding: 5px 11px; border-radius: 999px; white-space: nowrap;">2 ready</span>
+          </div>
+
+          <div style="background: linear-gradient(155deg, rgba(255,255,255,0.92), rgba(248,248,248,0.72)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(0,0,0,0.05), 0 10px 26px rgba(0,0,0,0.06); border-radius: 15px; padding: 17px 19px; display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.03em; color: #0a0a0a;">LinkedIn</span><span style="font-size: 12px; color: #a0a0a0;">· considered</span><span style="margin-left: auto; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #8a8a8a;">Draft</span></div>
+            <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #333333; min-height: 63px;"><span id="kv-type"></span><span id="kv-caret" style="display: inline-block; width: 2px; height: 15px; background: #e0952b; margin-left: 1px; vertical-align: -2px; animation: kv-caret 1s step-end infinite;"></span></p>
+            <div id="kv-draft-pending" style="display: flex; gap: 8px; align-items: center;">
+              <button onclick="kvApprove()" class="kv-approve" style="font-size: 12px; font-weight: 600; font-family: inherit; color: #ffffff; background: #0a0a0a; border: none; padding: 8px 17px; border-radius: 999px; cursor: pointer; transition: background .2s ease, transform .2s ease;">Approve</button>
+              <button class="kv-edit" style="font-size: 12px; font-weight: 600; font-family: inherit; color: #0a0a0a; background: #ffffff; border: 1px solid #dcdcdc; padding: 8px 14px; border-radius: 999px; cursor: pointer; transition: border-color .2s ease;">Edit</button>
+              <button class="kv-skip" style="font-size: 12px; font-weight: 500; font-family: inherit; color: #8a8a8a; background: transparent; border: none; padding: 8px; cursor: pointer; transition: color .2s ease;">Skip</button>
+            </div>
+            <div id="kv-draft-approved" style="display: none; align-items: center; gap: 9px; font-size: 13px; color: #0a0a0a; background: #fbf1e2; border: 1px solid #f0dcbe; border-radius: 10px; padding: 9px 12px; animation: kv-pop .3s ease both;">
+              <span style="width: 20px; height: 20px; border-radius: 50%; background: #e0952b; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span><strong>Approved by you.</strong> Scheduled for 9:00 AM.</span>
+            </div>
+          </div>
+
+          <div style="background: linear-gradient(155deg, rgba(255,255,255,0.92), rgba(248,248,248,0.72)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(0,0,0,0.05), 0 10px 26px rgba(0,0,0,0.06); border-radius: 15px; padding: 17px 19px; display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.03em; color: #0a0a0a;">X</span><span style="font-size: 12px; color: #a0a0a0;">· incisive</span><span style="margin-left: auto; font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #8a8a8a;">Draft</span></div>
+            <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #333333;">Nobody wants another dashboard. They want the one number that tells them if the work is working. So we built that.</p>
+            <div style="display: flex; gap: 8px; align-items: center;"><span style="font-size: 12px; font-weight: 600; color: #ffffff; background: #0a0a0a; padding: 8px 17px; border-radius: 999px;">Approve</span><span style="font-size: 12px; font-weight: 600; color: #0a0a0a; background: #ffffff; border: 1px solid #dcdcdc; padding: 8px 14px; border-radius: 999px;">Edit</span><span style="font-size: 12px; font-weight: 500; color: #8a8a8a; padding: 8px;">Skip</span></div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 16px; min-width: 0;">
+          <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #9a9a9a;">Relationship net worth</div>
+          <div style="background: linear-gradient(155deg, rgba(255,250,243,0.94), rgba(251,241,226,0.72)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(224,149,43,0.12), 0 10px 26px rgba(176,110,30,0.08); border-radius: 15px; padding: 20px;">
+            <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #b07b1c; margin-bottom: 8px;">True Reach</div>
+            <div style="display: flex; align-items: baseline; gap: 9px;"><span data-count="8240" style="font-size: 38px; font-weight: 700; letter-spacing: -0.035em; color: #e0952b; font-variant-numeric: tabular-nums; line-height: 1;">8,240</span><span style="font-size: 13px; font-weight: 600; color: #0a0a0a;">+22%</span></div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div style="background: #ffffff; border: 1px solid #ededed; border-radius: 15px; padding: 17px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);"><div style="font-size: 25px; font-weight: 700; color: #0a0a0a; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">41</div><div style="font-size: 12px; color: #8a8a8a; margin-top: 3px;">Approved by you</div></div>
+            <div style="background: #ffffff; border: 1px solid #ededed; border-radius: 15px; padding: 17px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);"><div style="font-size: 25px; font-weight: 700; color: #0a0a0a; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">210</div><div style="font-size: 12px; color: #8a8a8a; margin-top: 3px;">Warm replies</div></div>
+          </div>
+          <div style="background: #ffffff; border: 1px solid #ededed; border-radius: 15px; padding: 17px 19px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+            <div style="font-size: 12px; color: #8a8a8a; margin-bottom: 13px;">Net worth, last 8 weeks</div>
+            <div style="display: flex; align-items: flex-end; gap: 7px; height: 58px;">
+              <div style="flex: 1; height: 34%; background: #f0dcbe; border-radius: 4px 4px 0 0;"></div>
+              <div style="flex: 1; height: 44%; background: #eecfa2; border-radius: 4px 4px 0 0;"></div>
+              <div style="flex: 1; height: 40%; background: #eecfa2; border-radius: 4px 4px 0 0;"></div>
+              <div style="flex: 1; height: 56%; background: #eab866; border-radius: 4px 4px 0 0;"></div>
+              <div style="flex: 1; height: 62%; background: #e6a949; border-radius: 4px 4px 0 0;"></div>
+              <div style="flex: 1; height: 74%; background: #e0952b; border-radius: 4px 4px 0 0;"></div>
+              <div style="flex: 1; height: 86%; background: #c67e1d; border-radius: 4px 4px 0 0;"></div>
+              <div style="flex: 1; height: 100%; background: #ac6b14; border-radius: 4px 4px 0 0;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STATEMENT / THE BET (dark section) -->
+  <section style="position: relative; overflow: hidden; background: #201d19;">
+    <div style="position: absolute; top: -20%; left: 62%; width: 720px; height: 720px; z-index: 0; pointer-events: none; border-radius: 50%; background: radial-gradient(circle, rgba(224,149,43,0.34), rgba(224,149,43,0) 66%); filter: blur(38px); animation: kv-glow 12s ease-in-out infinite;"></div>
+    <div style="position: absolute; bottom: -30%; left: -8%; width: 560px; height: 560px; z-index: 0; pointer-events: none; border-radius: 50%; background: radial-gradient(circle, rgba(150,50,125,0.16), rgba(150,50,125,0) 68%); filter: blur(40px); animation: kv-drift2 26s ease-in-out infinite;"></div>
+    <div style="position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: clamp(72px,10vw,140px) 32px;">
+      <p data-reveal style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #e0952b; margin: 0 0 clamp(24px,3vw,36px);">The bet</p>
+      <p data-reveal style="font-size: clamp(30px,4.4vw,58px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.1; margin: 0; max-width: 20ch; color: #f6f2ec; text-wrap: balance;">AI made generic outreach free, which made it worthless.</p>
+      <p data-reveal style="font-size: clamp(19px,2.1vw,26px); font-weight: 400; letter-spacing: -0.01em; line-height: 1.4; margin: clamp(24px,3vw,36px) 0 0; max-width: 30ch; color: #b6ada1; text-wrap: pretty;">People hate buying from bots. The one thing that got more valuable is a real person, building in public, whose audience feels like they know them. Those parasocial relationships are the last distribution that does not vanish the day you stop paying a platform.</p>
+    </div>
+  </section>
+
+  <!-- USE-CASE CARDS -->
+  <section style="position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(38% 44% at 16% 24%, rgba(12,60,6,0.06), transparent 70%), radial-gradient(40% 46% at 84% 40%, rgba(107,24,111,0.06), transparent 72%), radial-gradient(46% 50% at 50% 96%, rgba(245,236,231,0.6), transparent 72%); filter: blur(28px); animation: kv-drift 32s ease-in-out infinite;"></div>
+    <div style="position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: clamp(72px,10vw,140px) 32px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div data-reveal class="kv-case" style="background: linear-gradient(155deg, rgba(255,255,255,0.92), rgba(248,248,248,0.7)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(0,0,0,0.05), 0 12px 30px rgba(0,0,0,0.06); border-radius: 20px; padding: 32px 30px; display: flex; flex-direction: column; gap: 12px; height: 100%; box-sizing: border-box; transition: transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s ease;">
+          <div style="font-size: clamp(22px,2.4vw,26px); font-weight: 600; letter-spacing: -0.025em; color: #0a0a0a; line-height: 1.1;">Founders</div>
+          <div style="font-size: 16px; line-height: 1.5; color: #6b6b6b;">Raising, launching, or hiring. Keep your narrative in market while you run the company.</div>
+        </div>
+        <div data-reveal class="kv-case" style="background: linear-gradient(155deg, rgba(255,255,255,0.92), rgba(248,248,248,0.7)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(0,0,0,0.05), 0 12px 30px rgba(0,0,0,0.06); border-radius: 20px; padding: 32px 30px; display: flex; flex-direction: column; gap: 12px; height: 100%; box-sizing: border-box; transition: transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s ease;">
+          <div style="font-size: clamp(22px,2.4vw,26px); font-weight: 600; letter-spacing: -0.025em; color: #0a0a0a; line-height: 1.1;">Solo builders</div>
+          <div style="font-size: 16px; line-height: 1.5; color: #6b6b6b;">Shipping alone. Turn every release into something your audience actually sees.</div>
+        </div>
+        <div data-reveal class="kv-case" style="background: linear-gradient(155deg, rgba(255,255,255,0.92), rgba(248,248,248,0.7)); border: 1px solid rgba(255,255,255,0.9); box-shadow: inset 0 1px 1px rgba(255,255,255,0.95), 0 0 0 1px rgba(0,0,0,0.05), 0 12px 30px rgba(0,0,0,0.06); border-radius: 20px; padding: 32px 30px; display: flex; flex-direction: column; gap: 12px; height: 100%; box-sizing: border-box; transition: transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s ease;">
+          <div style="font-size: clamp(22px,2.4vw,26px); font-weight: 600; letter-spacing: -0.025em; color: #0a0a0a; line-height: 1.1;">Operators and creators</div>
+          <div style="font-size: 16px; line-height: 1.5; color: #6b6b6b;">Your pipeline runs on reputation. Show up as the expert, every week, in your voice.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMBERED STEPS -->
+  <section id="how" style="position: relative;">
+    <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(180deg, #ffffff 0%, rgba(250,248,245,0) 37%, rgba(251,249,247,0.5) 73%, #ffffff 96%);"></div>
+    <div style="position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: clamp(20px,3vw,40px) 32px clamp(72px,10vw,140px);">
+      <p data-reveal style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #9a9a9a; margin: 0 0 clamp(36px,4vw,56px);">How it works</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(20px,3vw,32px);">
+        <div data-reveal class="kv-step" style="display: flex; flex-direction: column; gap: 14px; padding: 26px 22px 26px 0; border-top: 2px solid #e6e6e6; transition: transform .28s cubic-bezier(.2,.8,.2,1), border-color .28s ease;">
+          <div style="font-size: clamp(34px,4vw,46px); font-weight: 700; letter-spacing: -0.04em; color: #0a0a0a; font-variant-numeric: tabular-nums; line-height: 1;">01</div>
+          <div style="font-size: clamp(20px,2.1vw,24px); font-weight: 600; letter-spacing: -0.02em; color: #0a0a0a; line-height: 1.15;">It drafts in your voice</div>
+          <div style="font-size: 16px; line-height: 1.55; color: #6b6b6b;">Karamel reads your field and the arc of what you are building, and drafts posts that sound like you, not a template.</div>
+        </div>
+        <div data-reveal class="kv-step" style="display: flex; flex-direction: column; gap: 14px; padding: 26px 22px 26px 0; border-top: 2px solid #e6e6e6; transition: transform .28s cubic-bezier(.2,.8,.2,1), border-color .28s ease;">
+          <div style="font-size: clamp(34px,4vw,46px); font-weight: 700; letter-spacing: -0.04em; color: #0a0a0a; font-variant-numeric: tabular-nums; line-height: 1;">02</div>
+          <div style="font-size: clamp(20px,2.1vw,24px); font-weight: 600; letter-spacing: -0.02em; color: #0a0a0a; line-height: 1.15;">You approve, you publish</div>
+          <div style="font-size: 16px; line-height: 1.55; color: #6b6b6b;">Each piece is shaped for where it lands, incisive on X, considered on LinkedIn. It waits for your approval. You always publish.</div>
+        </div>
+        <div data-reveal class="kv-step" style="display: flex; flex-direction: column; gap: 14px; padding: 26px 22px 26px 0; border-top: 2px solid #e6e6e6; transition: transform .28s cubic-bezier(.2,.8,.2,1), border-color .28s ease;">
+          <div style="font-size: clamp(34px,4vw,46px); font-weight: 700; letter-spacing: -0.04em; color: #0a0a0a; font-variant-numeric: tabular-nums; line-height: 1;">03</div>
+          <div style="font-size: clamp(20px,2.1vw,24px); font-weight: 600; letter-spacing: -0.02em; color: #0a0a0a; line-height: 1.15;">It compounds into an asset</div>
+          <div style="font-size: 16px; line-height: 1.55; color: #6b6b6b;">Your strongest work consolidates into a newsletter you own outright, and True Reach tracks the audience you actually own.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUE REACH METRIC -->
+  <section style="position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(44% 50% at 86% 42%, rgba(224,149,43,0.12), transparent 70%), radial-gradient(40% 44% at 10% 80%, rgba(150,50,125,0.05), transparent 72%); filter: blur(30px); animation: kv-drift2 30s ease-in-out infinite;"></div>
+    <div style="position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: 0 32px clamp(72px,10vw,140px);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(32px,5vw,72px); align-items: center;">
+        <div>
+          <p data-reveal style="font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #9a9a9a; margin: 0 0 clamp(20px,2.5vw,30px);">Relationship net worth</p>
+          <h2 data-reveal style="font-size: clamp(34px,4.6vw,60px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.02; margin: 0 0 24px; color: #0a0a0a; text-wrap: balance;">Your distribution, with a number on it.</h2>
+          <p data-reveal style="font-size: clamp(17px,1.9vw,20px); line-height: 1.55; color: #6b6b6b; margin: 0; max-width: 44ch; text-wrap: pretty;">True Reach is the headline number: the people you can reach without a platform's permission who are also in a genuine two-way exchange with you. Your distribution is an asset. Watch it grow.</p>
+        </div>
+        <div data-reveal style="background: linear-gradient(155deg, rgba(255,255,255,0.94), rgba(250,247,243,0.72)); border: 1px solid rgba(255,255,255,0.92); box-shadow: inset 0 1px 1px rgba(255,255,255,0.96), 0 0 0 1px rgba(0,0,0,0.05), 0 20px 54px rgba(0,0,0,0.1); border-radius: 22px; padding: clamp(28px,3.5vw,40px); display: flex; flex-direction: column; gap: 22px;">
+          <div>
+            <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #b07b1c; margin-bottom: 10px;">True Reach, this quarter</div>
+            <div style="display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;"><span data-count="8240" style="font-size: clamp(52px,8vw,76px); font-weight: 700; letter-spacing: -0.05em; color: #e0952b; line-height: 1; font-variant-numeric: tabular-nums;">8,240</span><span style="font-size: 16px; font-weight: 700; color: #0a0a0a;">+22%</span></div>
+          </div>
+          <div style="height: 1px; background: #ececec;"></div>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; flex-direction: column; gap: 7px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 14px; color: #6b6b6b;">In a two-way exchange with you</span><span style="font-size: 15px; font-weight: 700; color: #0a0a0a; font-variant-numeric: tabular-nums;">3,120</span></div>
+              <div style="height: 7px; border-radius: 999px; background: #efefef; overflow: hidden;"><div data-bar="82%" style="height: 100%; width: 82%; border-radius: 999px; background: linear-gradient(90deg, #e0952b, #c67e1d); transform-origin: left; transition: transform .9s cubic-bezier(.2,.8,.2,1);"></div></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 7px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 14px; color: #6b6b6b;">Warm conversations this quarter</span><span style="font-size: 15px; font-weight: 700; color: #0a0a0a; font-variant-numeric: tabular-nums;">640</span></div>
+              <div style="height: 7px; border-radius: 999px; background: #efefef; overflow: hidden;"><div data-bar="48%" style="height: 100%; width: 48%; border-radius: 999px; background: linear-gradient(90deg, #e0952b, #c67e1d); transform-origin: left; transition: transform .9s cubic-bezier(.2,.8,.2,1);"></div></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 7px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-size: 14px; color: #6b6b6b;">Audience you own outright</span><span style="font-size: 15px; font-weight: 700; color: #0a0a0a; font-variant-numeric: tabular-nums;">12,800</span></div>
+              <div style="height: 7px; border-radius: 999px; background: #efefef; overflow: hidden;"><div data-bar="66%" style="height: 100%; width: 66%; border-radius: 999px; background: linear-gradient(90deg, #e0952b, #c67e1d); transform-origin: left; transition: transform .9s cubic-bezier(.2,.8,.2,1);"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA + FOOTER (tall vertical fade into dark) -->
+  <div style="background: linear-gradient(180deg, #ffffff 0%, #faf8f5 20%, rgba(224,149,43,0.13) 46%, #1d1b26 100%);">
+    <section id="waitlist" data-reveal style="max-width: 1240px; margin: 0 auto; padding: clamp(40px,6vw,80px) 32px clamp(72px,9vw,120px);">
+      <h2 style="font-size: clamp(40px,6.4vw,84px); font-weight: 700; letter-spacing: -0.05em; line-height: 0.98; margin: 0 0 clamp(28px,3.5vw,40px); max-width: 16ch; color: #0a0a0a; text-wrap: balance;">Your next chapter deserves an audience.</h2>
+      <div class="km-wl">
+        <div class="km-wl-open">
+          <form onsubmit="return joinWaitlist(event)" style="display: flex; gap: 10px; flex-wrap: wrap; max-width: 520px;">
+            <input class="kv-field" type="email" required placeholder="you@company.com" style="flex: 1; min-width: 220px; padding: 16px 22px; font-size: 16px; border: 1px solid #d8d2c8; border-radius: 999px; background: rgba(255,255,255,0.85); color: #0a0a0a; outline: none; box-sizing: border-box; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;">
+            <button type="submit" class="kv-wl-submit" style="display: inline-flex; align-items: center; gap: 9px; padding: 16px 30px; font-size: 16px; font-weight: 600; font-family: inherit; color: #ffffff; background: #0a0a0a; border: none; border-radius: 999px; cursor: pointer; white-space: nowrap; transition: background .2s ease, transform .2s ease, box-shadow .2s ease;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Join waitlist
+            </button>
+          </form>
+        </div>
+        <div class="km-wl-joined" style="display: none;">
+          <div style="display: inline-flex; align-items: center; gap: 13px; padding: 16px 24px; background: rgba(255,255,255,0.85); border: 1px solid #f0dcbe; border-radius: 999px; animation: kv-pop .35s ease both;">
+            <span style="width: 30px; height: 30px; border-radius: 50%; background: #e0952b; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span style="font-size: 16px; font-weight: 600; color: #0a0a0a;">You're on the list. We'll be in touch.</span>
+          </div>
+        </div>
+      </div>
+      <p style="font-size: 14px; color: #8a8175; margin: 16px 2px 0;">Karamel drafts. You approve. Nothing goes out until you say go.</p>
+    </section>
+
+    <footer style="border-top: 1px solid rgba(255,255,255,0.08); padding: 32px 32px;">
+      <div style="max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <img src="../assets/emblem.svg" alt="" style="height: 22px; width: auto;">
+          <span style="font-size: 19px; font-weight: 600; letter-spacing: -0.04em; color: #f2eee8;">Karamel</span>
+        </div>
+        <span style="font-size: 14px; color: #8b8797;">© 2026 Karamel. Distribution you own.</span>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script>
+  // Waitlist capture. Emails post to a Google Form you own (free, lands in a Google Sheet).
+  // Set FORM_ACTION to the form's ".../formResponse" URL and EMAIL_FIELD to the "entry.XXXX" id.
+  // Until both are set, a submit is logged to the console and nothing is stored yet.
+  var FORM_ACTION = "";
+  var EMAIL_FIELD = "";
+
+  function joinWaitlist(e){
+    e.preventDefault();
+    var form = e.target;
+    var wrap = form.closest('.km-wl');
+    var input = form.querySelector('input[type=email]');
+    var email = (input.value || "").trim();
+    if(!email){ return false; }
+    function done(){
+      if(!wrap){ return; }
+      var open = wrap.querySelector('.km-wl-open');
+      var joined = wrap.querySelector('.km-wl-joined');
+      if(open){ open.style.display = 'none'; }
+      if(joined){ joined.style.display = 'flex'; }
+    }
+    if(!FORM_ACTION || !EMAIL_FIELD){
+      console.warn("[waitlist] capture not configured yet, email:", email);
+      done();
+      return false;
+    }
+    var body = new URLSearchParams();
+    body.append(EMAIL_FIELD, email);
+    fetch(FORM_ACTION, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: body.toString() }).then(done).catch(done);
+    return false;
+  }
+
+  // Sample-draft interactivity (approve). Ported from the design's state/handler.
+  function kvApprove(){
+    document.getElementById('kv-draft-pending').style.display = 'none';
+    document.getElementById('kv-draft-approved').style.display = 'flex';
+  }
+
+  (function(){
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // staggered scroll reveals
+    var revealEls = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+    revealEls.forEach(function(el){
+      var sibs = Array.prototype.slice.call(el.parentElement.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+      var idx = Math.max(0, sibs.indexOf(el));
+      el.style.transition = 'opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1)';
+      el.style.transitionDelay = Math.min(idx, 6) * 85 + 'ms';
+    });
+    if('IntersectionObserver' in window && !reduced){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){ en.target.style.opacity = '1'; en.target.style.transform = ''; io.unobserve(en.target); }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+      revealEls.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if(r.top > window.innerHeight * 0.92){ el.style.opacity = '0'; el.style.transform = 'translateY(24px)'; io.observe(el); }
+      });
+    }
+
+    // count-up on view
+    var fmt = function(n){ return Math.round(n).toLocaleString('en-US'); };
+    var countUp = function(el, target){
+      var dur = 1300, t0 = performance.now();
+      var tick = function(t){
+        var p = Math.min(1, (t - t0) / dur);
+        var e = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(target * e);
+        if(p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    document.querySelectorAll('[data-count]').forEach(function(el){
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      if(reduced || !('IntersectionObserver' in window)){ el.textContent = fmt(target); return; }
+      el.textContent = fmt(0);
+      var co = new IntersectionObserver(function(ents){
+        ents.forEach(function(e){ if(e.isIntersecting){ countUp(el, target); co.unobserve(el); } });
+      }, { threshold: 0.5 });
+      co.observe(el);
+    });
+
+    // True Reach bars fill on view
+    if(!reduced && 'IntersectionObserver' in window){
+      document.querySelectorAll('[data-bar]').forEach(function(el){
+        el.style.transform = 'scaleX(0)';
+        var bo = new IntersectionObserver(function(ents){
+          ents.forEach(function(e){ if(e.isIntersecting){ el.style.transform = 'scaleX(1)'; bo.unobserve(el); } });
+        }, { threshold: 0.4 });
+        bo.observe(el);
+      });
+    }
+
+    // self-demoing typing of the LinkedIn draft
+    var draft = 'Spent the week ripping out our onboarding and rebuilding it around the one question users kept asking. Here is what changed, and why it took three tries to get right.';
+    var typeEl = document.getElementById('kv-type');
+    var caret = document.getElementById('kv-caret');
+    if(typeEl){
+      if(reduced || !('IntersectionObserver' in window)){
+        typeEl.textContent = draft;
+        if(caret){ caret.style.display = 'none'; }
+      } else {
+        var prod = document.getElementById('kv-product');
+        var to = new IntersectionObserver(function(ents){
+          ents.forEach(function(e){
+            if(e.isIntersecting){
+              to.unobserve(e.target);
+              var i = 0;
+              var type = function(){
+                if(i <= draft.length){
+                  typeEl.textContent = draft.slice(0, i);
+                  i += 1;
+                  var ch = draft[i - 1];
+                  setTimeout(type, ch === ' ' ? 26 : 15 + Math.random() * 30);
+                } else if(caret){
+                  setTimeout(function(){ caret.style.display = 'none'; }, 1400);
+                }
+              };
+              setTimeout(type, 350);
+            }
+          });
+        }, { threshold: 0.35 });
+        to.observe(prod);
+      }
+    }
+  })();
+</script>
+<script>
+/* dev live-reload: localhost only. Polls this file and reloads when it changes. Inert in production. */
+(function(){
+  if(!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){ return; }
+  var seen = null;
+  setInterval(function(){
+    fetch(location.pathname, { method:"HEAD", cache:"no-store" }).then(function(r){
+      var m = r.headers.get("Last-Modified");
+      if(seen && m && m !== seen){ location.reload(); }
+      seen = m;
+    }).catch(function(){});
+  }, 1000);
+})();
+</script>
+</body>
+</html>
