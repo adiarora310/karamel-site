@@ -48,6 +48,13 @@
   .kv-step:hover { transform: translateY(-6px) scale(1.02); border-color: #e0952b; }
   .kv-field:focus { border-color: #e0952b; box-shadow: 0 0 0 4px rgba(224,149,43,0.18); }
   .kv-wl-submit:hover { background: #262626; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(10,10,10,0.22); }
+  /* THE BET light. The source loop is acid lime; hue-rotate carries it to caramel.
+     CSS hue-rotate is a matrix approximation, not a true rotation, so these are tuned by eye. */
+  .kv-bet-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    /* Mirrored, the way the reference does it: the source's hot core sits left, and our copy is
+       left-aligned, so flipping carries the light to the right where nothing sits on top of it. */
+    transform: scaleX(-1.18) scaleY(1.18);
+    filter: hue-rotate(-28deg) brightness(0.8) contrast(1.4); }
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
     [data-reveal] { opacity: 1 !important; transform: none !important; }
@@ -166,9 +173,20 @@
   </section>
 
   <!-- STATEMENT / THE BET (dark section) -->
-  <section style="position: relative; overflow: hidden; background: #201d19;">
-    <div style="position: absolute; top: -20%; left: 62%; width: 720px; height: 720px; z-index: 0; pointer-events: none; border-radius: 50%; background: radial-gradient(circle, rgba(224,149,43,0.34), rgba(224,149,43,0) 66%); filter: blur(38px); animation: kv-glow 12s ease-in-out infinite;"></div>
-    <div style="position: absolute; bottom: -30%; left: -8%; width: 560px; height: 560px; z-index: 0; pointer-events: none; border-radius: 50%; background: radial-gradient(circle, rgba(150,50,125,0.16), rgba(150,50,125,0) 68%); filter: blur(40px); animation: kv-drift2 26s ease-in-out infinite;"></div>
+  <section id="bet" style="position: relative; overflow: hidden; background: #201d19;">
+    <div style="position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; background: #000000;">
+      <video id="kv-bet-light" class="kv-bet-video" autoplay muted loop playsinline preload="metadata" poster="assets/thebet-light-poster.jpg" aria-hidden="true" tabindex="-1">
+        <source src="assets/thebet-light.webm" type="video/webm">
+        <source src="assets/thebet-light.mp4" type="video/mp4">
+      </video>
+      <!-- top scrim, keeps the pill and heading off the hot core -->
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(32,29,25,0.42), rgba(32,29,25,0.05) 55%, rgba(32,29,25,0));"></div>
+      <!-- left scrim. Our copy is left-aligned and the light sweeps through it; this holds the text
+           column readable and lets the light bloom on the right, where nothing sits on top of it. -->
+      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(32,29,25,0.8) 0%, rgba(32,29,25,0.55) 30%, rgba(32,29,25,0.16) 54%, rgba(32,29,25,0) 74%);"></div>
+      <!-- bottom fade, so the light never ends on a hard edge -->
+      <div style="position: absolute; inset: 45% 0 0 0; background: linear-gradient(180deg, rgba(32,29,25,0) 0%, rgba(32,29,25,0.55) 45%, rgba(32,29,25,0.92) 80%, #201d19 100%);"></div>
+    </div>
     <div style="position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: clamp(72px,10vw,140px) 32px;">
       <p data-reveal style="margin: 0 0 clamp(24px,3vw,36px);"><span class="kv-pill" style="display: inline-block; padding: 7px 15px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1b1a18; background: #fcc9ab; border-radius: 999px; transition: transform .25s cubic-bezier(.34,1.56,.64,1);">The bet</span></p>
       <p data-reveal style="font-size: clamp(30px,4.4vw,58px); font-weight: 600; letter-spacing: -0.035em; line-height: 1.1; margin: 0; max-width: 20ch; color: #f6f2ec; text-wrap: balance;">AI made generic outreach free, which made it worthless.</p>
@@ -371,6 +389,12 @@
 
   (function(){
     var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // THE BET light: hold on a still frame when motion is not wanted
+    if(reduced){
+      var betLight = document.getElementById('kv-bet-light');
+      if(betLight){ betLight.autoplay = false; betLight.removeAttribute('autoplay'); betLight.pause(); }
+    }
 
     // staggered scroll reveals
     var revealEls = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
