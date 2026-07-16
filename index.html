@@ -37,7 +37,46 @@
   @keyframes kv-drift2 { 0%,100% { transform: translate3d(0,0,0) scale(1); } 50% { transform: translate3d(-3%,4%,0) scale(1.1); } }
   @keyframes kv-glow { 0%,100% { opacity: .68; transform: translateX(-50%) scale(1); } 50% { opacity: 1; transform: translateX(-50%) scale(1.1); } }
   /* hover and focus states (converted from the design's inline hover/focus attributes) */
-  .kv-nav-cta:hover { background: #262626; transform: translateY(-1px); }
+  /* Nav glass. Measured off the zelara.ai header pill and reproduced value for value:
+     blur+saturate, the 29deg sheen, the hairline border, and all four shadows (two inset
+     highlights, two drops). Only the tint is ours: their base is a dark green, ours is #201d19. */
+  .kv-nav-glass {
+    max-width: 1152px; margin: 0 auto; height: 64px; padding: 0 24px; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background-color: rgba(32,29,25,0.18);
+    background-image: linear-gradient(29deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0) 100%);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    backdrop-filter: blur(18px) saturate(1.4);
+    box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.12),
+                inset 0 -1px 0 0 rgba(255,255,255,0.05),
+                0 20px 40px -18px rgba(0,0,0,0.55),
+                0 4px 14px -6px rgba(0,0,0,0.35);
+    transition: background-color .3s ease, background-image .3s ease, border-color .3s ease, box-shadow .3s ease;
+  }
+  .kv-wordmark { font-size: 22px; font-weight: 600; letter-spacing: -0.04em; color: #ffffff; transition: color .3s ease; }
+  .kv-nav-link { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.8); transition: color .3s ease; }
+  .kv-nav-cta { display: inline-flex; align-items: center; height: 40px; padding: 0 20px; font-size: 14px;
+    font-weight: 600; color: #0a0a0a; background: #ffffff; border-radius: 999px; white-space: nowrap;
+    transition: background .2s ease, color .2s ease, transform .2s ease; }
+  /* Past the hero the page turns white, where the exact glass would hide its own contents
+     (white type on a light pill). Same geometry, readable backdrop. */
+  .kv-nav-glass.kv-nav-light {
+    background-color: rgba(255,255,255,0.7);
+    background-image: linear-gradient(29deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.28) 50%, rgba(255,255,255,0) 100%);
+    border-color: rgba(10,10,10,0.08);
+    box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.9),
+                0 12px 30px -14px rgba(0,0,0,0.2),
+                0 2px 8px -4px rgba(0,0,0,0.1);
+  }
+  .kv-nav-light .kv-wordmark { color: #0a0a0a; }
+  .kv-nav-light .kv-nav-link { color: #6b6b6b; }
+  .kv-nav-light .kv-nav-cta { background: #0a0a0a; color: #ffffff; }
+  .kv-nav-glass a:not(.kv-nav-cta):hover { color: #ffffff; }
+  .kv-nav-light a:not(.kv-nav-cta):hover { color: #0a0a0a; }
+  .kv-nav-cta:hover { background: #f4ead9; color: #0a0a0a; transform: translateY(-1px); }
+  .kv-nav-light .kv-nav-cta:hover { background: #262626; color: #ffffff; }
   .kv-hero-primary:hover { background: #f4ead9; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.35); }
   .kv-hero-ghost:hover { border-color: #ffffff; transform: translateY(-2px); background: rgba(255,255,255,0.1); }
   .kv-approve:hover { background: #262626; transform: translateY(-1px); }
@@ -62,21 +101,22 @@
 </style>
 </head>
 <body>
-<div style="font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; color: #0a0a0a; background: #ffffff; overflow-x: hidden;">
-
-  <!-- NAV -->
-  <nav style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.82); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); border-bottom: 1px solid #eeeeee;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+<!-- NAV. Lives outside the wrapper below: that wrapper has overflow-x:hidden, which makes it a
+     scroll container, and a position:fixed nav has no business nested inside one. -->
+<nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 20px 24px 0; pointer-events: none; font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif;">
+    <div class="kv-nav-glass" style="pointer-events: auto;">
       <a href="#top" style="display: flex; align-items: center; gap: 9px; flex-shrink: 0;">
         <img src="assets/emblem.svg" alt="Karamel" style="height: 27px; width: auto; display: block;">
-        <span style="font-size: 22px; font-weight: 600; letter-spacing: -0.04em; color: #0a0a0a;">Karamel</span>
+        <span class="kv-wordmark">Karamel</span>
       </a>
       <div style="display: flex; align-items: center; gap: clamp(10px,2vw,22px);">
-        <a href="#waitlist" id="kv-signin" style="font-size: 15px; font-weight: 500; color: #0a0a0a;">Sign in</a>
-        <a href="#waitlist" class="kv-nav-cta" style="display: inline-flex; align-items: center; padding: 11px 22px; font-size: 15px; font-weight: 600; color: #ffffff; background: #0a0a0a; border-radius: 999px; white-space: nowrap; transition: background .2s ease, transform .2s ease;">Join waitlist</a>
+        <a href="#waitlist" id="kv-signin" class="kv-nav-link">Sign in</a>
+        <a href="#waitlist" class="kv-nav-cta">Join waitlist</a>
       </div>
     </div>
-  </nav>
+</nav>
+
+<div style="font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif; color: #0a0a0a; background: #ffffff; overflow-x: hidden;">
 
   <!-- HERO -->
   <header id="top" style="position: relative; overflow: hidden; background: #201d19;">
@@ -95,7 +135,7 @@
            white section below. -->
       <div style="position: absolute; inset: 99.5% 0 0 0; background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #ffffff 100%);"></div>
     </div>
-    <div style="position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: clamp(88px,12vw,160px) 32px clamp(72px,9vw,116px);">
+    <div style="position: relative; z-index: 1; max-width: 1240px; margin: 0 auto; padding: clamp(132px,14vw,196px) 32px clamp(72px,9vw,116px);">
       <h1 data-reveal style="font-size: clamp(52px,9vw,108px); font-weight: 700; letter-spacing: -0.05em; line-height: 0.97; margin: 0 0 clamp(24px,3vw,34px); max-width: 15ch; text-wrap: balance; color: #ffffff;">Build the distribution you actually own.</h1>
       <p data-reveal style="font-size: clamp(18px,1.9vw,22px); line-height: 1.45; color: rgba(255,255,255,0.82); max-width: 620px; margin: 0 0 clamp(30px,4vw,42px); text-wrap: pretty;">Karamel is the GTM engine for lean founders and builders who sell through who they are. It turns what you are building into media in your own voice, publishes it where your audience already is, and compounds it into relationships you own.</p>
       <div data-reveal style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
@@ -419,6 +459,19 @@
 
   (function(){
     var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Nav: keep the exact glass while it sits over the dark hero, switch to a light pill once
+    // the hero has scrolled past, since white type on white sections reads as nothing.
+    (function(){
+      var hero = document.getElementById('top');
+      var glass = document.querySelector('.kv-nav-glass');
+      if(!hero || !glass) { return; }
+      if(!('IntersectionObserver' in window)){ glass.classList.add('kv-nav-light'); return; }
+      // -84px = where the nav's bottom edge sits (20px inset + 64px tall)
+      new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ glass.classList.toggle('kv-nav-light', !e.isIntersecting); });
+      }, { rootMargin: '-84px 0px 0px 0px', threshold: 0 }).observe(hero);
+    })();
 
     // Hero light: hold on a still frame when motion is not wanted
     if(reduced){
