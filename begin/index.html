@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Begin &middot; Karamel</title>
+<meta name="description" content="Sign in to Karamel. No password.">
+<!-- A pilot door, not a landing page. It should not turn up in search results. -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #0a0a0a;
+    --ink-dim: #6b6b6b;
+    --ink-faint: #8a8a8a;
+    --edge: #e6e6e6;
+    --field: #faf7f2;
+    --caramel: #e0952b;
+    --caramel-text: #9a5b08;
+    --warn-bg: #f4ead9;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Hanken Grotesk', system-ui, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+  main { width: 100%; max-width: 360px; }
+  .mark {
+    font-size: 20px; font-weight: 600; letter-spacing: -0.03em;
+    color: var(--ink); text-decoration: none; display: inline-block;
+    margin-bottom: 36px;
+  }
+  h1 { font-size: 30px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin: 0 0 10px; }
+  p.sub { font-size: 15px; color: var(--ink-dim); margin: 0 0 24px; }
+  label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  input[type="email"] {
+    width: 100%; min-height: 48px;
+    background: var(--field);
+    border: 1px solid var(--edge);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: inherit; font-size: 16px; color: var(--ink);
+  }
+  input[type="email"]::placeholder { color: var(--ink-faint); }
+  input[type="email"]:focus-visible { outline: 2px solid var(--caramel); outline-offset: 2px; }
+  button {
+    width: 100%; min-height: 48px; margin-top: 12px;
+    background: var(--ink); color: #fff;
+    border: 0; border-radius: 10px;
+    font-family: inherit; font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
+    cursor: pointer;
+  }
+  button:disabled { background: var(--ink-faint); cursor: default; }
+  button:focus-visible { outline: 2px solid var(--caramel); outline-offset: 2px; }
+  .note { font-size: 13px; color: var(--ink-faint); margin-top: 14px; }
+  .notice {
+    margin-top: 16px; background: var(--warn-bg); border-radius: 10px;
+    padding: 13px 15px; font-size: 13.5px; line-height: 1.55; color: #5c431b;
+  }
+  .again {
+    margin-top: 18px; background: none; border: 0; padding: 0;
+    width: auto; min-height: 0; color: var(--ink-dim);
+    font-size: 14px; font-weight: 400; text-decoration: underline; cursor: pointer;
+  }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <a class="mark" href="/">Karamel</a>
+
+  <section id="ask">
+    <h1>What is your email?</h1>
+    <p class="sub">We will send you a link. No password, and nothing to remember.</p>
+    <form id="form" novalidate>
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" inputmode="email" autocomplete="email"
+             placeholder="you@example.com" required>
+      <button id="go" type="submit">Send me a link</button>
+    </form>
+    <p class="note" id="hint"></p>
+  </section>
+
+  <section id="sent" hidden>
+    <h1>Check your email</h1>
+    <p class="sub">If that address has a Karamel account, a link is on its way. It works once and lasts 30 minutes.</p>
+    <button class="again" type="button" id="restart">Use a different address</button>
+  </section>
+
+  <section id="closed" hidden>
+    <h1>Not open yet</h1>
+    <p class="sub">Karamel is in a private pilot and this door is not taking addresses today.</p>
+    <div class="notice">Nothing was sent and nothing was stored. If you were expecting to get in here, the person who invited you can tell you where to go instead.</div>
+    <button class="again" type="button" id="retry">Try again</button>
+  </section>
+</main>
+
+<script>
+(function () {
+  var API = "https://api.heykaramel.com";
+  var form = document.getElementById("form");
+  var field = document.getElementById("email");
+  var go = document.getElementById("go");
+  var hint = document.getElementById("hint");
+  var ask = document.getElementById("ask");
+  var sent = document.getElementById("sent");
+  var closed = document.getElementById("closed");
+
+  function show(which) {
+    ask.hidden = which !== ask;
+    sent.hidden = which !== sent;
+    closed.hidden = which !== closed;
+  }
+
+  function reset() {
+    hint.textContent = "";
+    go.disabled = false;
+    go.textContent = "Send me a link";
+    show(ask);
+    field.focus();
+  }
+
+  document.getElementById("restart").addEventListener("click", function () { field.value = ""; reset(); });
+  document.getElementById("retry").addEventListener("click", reset);
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    var value = (field.value || "").trim();
+    if (!value || value.indexOf("@") < 1 || value.indexOf(".") < 0) {
+      hint.textContent = "That does not look like an email address.";
+      field.focus();
+      return;
+    }
+    hint.textContent = "";
+    go.disabled = true;
+    go.textContent = "Sending…";
+
+    var done = false;
+    var timer = setTimeout(function () {
+      if (!done) { done = true; show(closed); }
+    }, 12000);
+
+    fetch(API + "/api/v1/auth/email/start", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ email: value })
+    }).then(function (res) {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      // The API answers the same way whether or not the account exists, so a
+      // 200 is the only thing that means a link is on its way.
+      show(res.ok ? sent : closed);
+    }).catch(function () {
+      // Unreachable, or the browser refused the cross-origin call. Either way
+      // the person should be told plainly rather than left on a dead button.
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      show(closed);
+    });
+  });
+
+  field.focus();
+})();
+</script>
+</body>
+</html>
