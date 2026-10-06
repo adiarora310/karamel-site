@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Begin &middot; Karamel</title>
-<meta name="description" content="Sign in to Karamel. No password.">
+<meta name="description" content="Sign in to Karamel.">
 <!-- A pilot door, not a landing page. It should not turn up in search results. -->
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,8 +19,7 @@
     --edge: #e6e6e6;
     --field: #faf7f2;
     --caramel: #e0952b;
-    --caramel-text: #9a5b08;
-    --warn-bg: #f4ead9;
+    --wash: #f4ead9;
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; }
@@ -40,34 +39,28 @@
   main { width: 100%; max-width: 360px; }
   .mark {
     font-size: 20px; font-weight: 600; letter-spacing: -0.03em;
-    color: var(--ink); text-decoration: none; display: inline-block;
-    margin-bottom: 36px;
+    color: var(--ink); text-decoration: none; display: inline-block; margin-bottom: 36px;
   }
   h1 { font-size: 30px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin: 0 0 10px; }
   p.sub { font-size: 15px; color: var(--ink-dim); margin: 0 0 24px; }
   label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   input[type="email"] {
     width: 100%; min-height: 48px;
-    background: var(--field);
-    border: 1px solid var(--edge);
-    border-radius: 10px;
-    padding: 12px 16px;
-    font-family: inherit; font-size: 16px; color: var(--ink);
+    background: var(--field); border: 1px solid var(--edge); border-radius: 10px;
+    padding: 12px 16px; font-family: inherit; font-size: 16px; color: var(--ink);
   }
   input[type="email"]::placeholder { color: var(--ink-faint); }
   input[type="email"]:focus-visible { outline: 2px solid var(--caramel); outline-offset: 2px; }
   button {
     width: 100%; min-height: 48px; margin-top: 12px;
-    background: var(--ink); color: #fff;
-    border: 0; border-radius: 10px;
-    font-family: inherit; font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
-    cursor: pointer;
+    background: var(--ink); color: #fff; border: 0; border-radius: 10px;
+    font-family: inherit; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; cursor: pointer;
   }
   button:disabled { background: var(--ink-faint); cursor: default; }
   button:focus-visible { outline: 2px solid var(--caramel); outline-offset: 2px; }
   .note { font-size: 13px; color: var(--ink-faint); margin-top: 14px; }
   .notice {
-    margin-top: 16px; background: var(--warn-bg); border-radius: 10px;
+    margin-top: 16px; background: var(--wash); border-radius: 10px;
     padding: 13px 15px; font-size: 13.5px; line-height: 1.55; color: #5c431b;
   }
   .again {
@@ -84,57 +77,64 @@
 
   <section id="ask">
     <h1>What is your email?</h1>
-    <p class="sub">We will send you a link. No password, and nothing to remember.</p>
+    <p class="sub">The address you were set up with. No password, and nothing to remember.</p>
     <form id="form" novalidate>
       <label for="email">Email address</label>
       <input id="email" name="email" type="email" inputmode="email" autocomplete="email"
              placeholder="you@example.com" required>
-      <button id="go" type="submit">Send me a link</button>
+      <button id="go" type="submit">Continue</button>
     </form>
     <p class="note" id="hint"></p>
   </section>
 
-  <section id="sent" hidden>
-    <h1>Check your email</h1>
-    <p class="sub">If that address has a Karamel account, a link is on its way. It works once and lasts 30 minutes.</p>
-    <button class="again" type="button" id="restart">Use a different address</button>
+  <section id="pilot" hidden>
+    <h1>Private pilot</h1>
+    <p class="sub">Karamel is not open yet. That address is not one we have set up.</p>
+    <div class="notice">Nothing was sent and nothing was stored. If you were expecting to get in, check the address you were given, or ask the person who invited you.</div>
+    <button class="again" type="button" id="retry">Try a different address</button>
   </section>
 
-  <section id="closed" hidden>
-    <h1>Not open yet</h1>
-    <p class="sub">Karamel is in a private pilot and this door is not taking addresses today.</p>
-    <div class="notice">Nothing was sent and nothing was stored. If you were expecting to get in here, the person who invited you can tell you where to go instead.</div>
-    <button class="again" type="button" id="retry">Try again</button>
+  <section id="down" hidden>
+    <h1>We cannot reach Karamel</h1>
+    <p class="sub">The service is not answering right now, so we could not check that address.</p>
+    <div class="notice">This is on our side, not yours. Nothing was sent and nothing was stored.</div>
+    <button class="again" type="button" id="retryDown">Try again</button>
   </section>
 </main>
 
 <script>
 (function () {
-  var API = "https://api.heykaramel.com";
+  // Where the two halves live. Taken from the host so this same file works when
+  // it is served from a laptop during development.
+  var local = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  var API = local ? "http://localhost:8000" : "https://api.heykaramel.com";
+  var APP = local ? "http://localhost:3000" : "https://demo.heykaramel.com";
+  var DASHBOARD = APP + "/brief";
+
   var form = document.getElementById("form");
   var field = document.getElementById("email");
   var go = document.getElementById("go");
   var hint = document.getElementById("hint");
   var ask = document.getElementById("ask");
-  var sent = document.getElementById("sent");
-  var closed = document.getElementById("closed");
+  var pilot = document.getElementById("pilot");
+  var down = document.getElementById("down");
 
   function show(which) {
     ask.hidden = which !== ask;
-    sent.hidden = which !== sent;
-    closed.hidden = which !== closed;
+    pilot.hidden = which !== pilot;
+    down.hidden = which !== down;
   }
 
   function reset() {
     hint.textContent = "";
     go.disabled = false;
-    go.textContent = "Send me a link";
+    go.textContent = "Continue";
     show(ask);
     field.focus();
   }
 
-  document.getElementById("restart").addEventListener("click", function () { field.value = ""; reset(); });
-  document.getElementById("retry").addEventListener("click", reset);
+  document.getElementById("retry").addEventListener("click", function () { field.value = ""; reset(); });
+  document.getElementById("retryDown").addEventListener("click", reset);
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -146,32 +146,54 @@
     }
     hint.textContent = "";
     go.disabled = true;
-    go.textContent = "Sending…";
+    go.textContent = "Checking…";
 
-    var done = false;
+    var settled = false;
     var timer = setTimeout(function () {
-      if (!done) { done = true; show(closed); }
+      if (!settled) { settled = true; show(down); }
     }, 12000);
 
-    fetch(API + "/api/v1/auth/email/start", {
+    function finish(state) {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      show(state);
+    }
+
+    fetch(API + "/api/v1/auth/email/open", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      // The session cookie is set by the API on this call, so it has to be
+      // allowed to travel. The two hosts share a registrable domain, which is
+      // what makes that possible at all.
       credentials: "include",
       body: JSON.stringify({ email: value })
     }).then(function (res) {
-      if (done) return;
-      done = true;
-      clearTimeout(timer);
-      // The API answers the same way whether or not the account exists, so a
-      // 200 is the only thing that means a link is on its way.
-      show(res.ok ? sent : closed);
+      if (res.status === 429) {
+        finish(ask);
+        go.disabled = false;
+        go.textContent = "Continue";
+        hint.textContent = "Too many tries. Wait a minute and try again.";
+        return;
+      }
+      if (!res.ok) { finish(res.status >= 500 ? down : pilot); return; }
+      return res.json().then(function (body) {
+        if (settled) return;
+        if (body && body.known) {
+          // Signed in already: the cookie came back on that response. Replace
+          // rather than push, so Back does not return to a form that would now
+          // just sign them in again.
+          settled = true;
+          clearTimeout(timer);
+          go.textContent = "Opening…";
+          location.replace(DASHBOARD);
+          return;
+        }
+        finish(pilot);
+      });
     }).catch(function () {
-      // Unreachable, or the browser refused the cross-origin call. Either way
-      // the person should be told plainly rather than left on a dead button.
-      if (done) return;
-      done = true;
-      clearTimeout(timer);
-      show(closed);
+      // Unreachable, or the browser refused the cross-origin call.
+      finish(down);
     });
   });
 
